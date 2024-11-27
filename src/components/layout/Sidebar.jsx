@@ -41,6 +41,7 @@ function Sidebar ({
           to='/home'
           fontWeight='bold'
           _hover={{ textDecoration: 'underline' }}
+          color={colors.textInverted}
         >
           Profile
         </Link>

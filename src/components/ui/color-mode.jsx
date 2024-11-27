@@ -39,7 +39,7 @@ export function ColorModeIcon () {
 }
 
 export const ColorModeButton = () => {
-  const { toggleColorMode } = useColorMode()
+  const { toggleColorMode,colors } = useColorMode()
   return (
     <IconButton
       onClick={toggleColorMode}
@@ -47,6 +47,8 @@ export const ColorModeButton = () => {
       size={'lg'}
       rounded='full'
       colorScheme='gray'
+      color={colors.textInverted}
+            _hover={{ bg: colors.textSecondary }}
     >
       <ColorModeIcon />
     </IconButton>

@@ -15,7 +15,7 @@ function Navbar ({
 }) {
   return (
     <Flex
-      bg='rgba(0, 0, 0, 0.3)' // Transparent background with some opacity
+      // bg='rgba(0, 0, 0, 0.3)' // Transparent background with some opacity
       backdropFilter='blur(10px)' // Apply blur effect
       _webkitBackdropFilter='blur(10px)' // Safari support
       boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)' // Optional: Adds subtle shadow
