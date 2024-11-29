@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Box,
   Button,
@@ -18,6 +18,23 @@ const ContactSection = () => {
     email: '',
     message: ''
   })
+  const [scrollProgress, setScrollProgress] = useState(0)
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementById('contact')
+      if (section) {
+        const rect = section.getBoundingClientRect()
+        console.log('rect.top:', rect.top, 'rect.height:', rect.height) // Debugging output
+        const progress = Math.min(
+          Math.max((window.innerHeight - rect.top) / rect.height, 0),
+          1
+        )
+        setScrollProgress(progress)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -73,7 +90,35 @@ const ContactSection = () => {
   }
 
   return (
-    <Box id='contact' py={16} px={8} bg={colors.primary}>
+    <Box
+      id='contact'
+      py={16}
+      px={8}
+      bg={colors.secondary}
+      position='relative'
+      borderRadius='lg'
+    >
+      {/* Background Dashes */}
+      <Box
+        position='absolute'
+        bottom='0'
+        right='0'
+        width='100%'
+        height='100%'
+        zIndex={0}
+        opacity='0.3'
+        bg='transparent'
+        backgroundImage={`radial-gradient(${colors.gradientColor} 2px, transparent 0)`}
+        backgroundSize='15px 13px'
+        // transform={`translateX(${scrollProgress * 400}px)
+        //      translateY(${scrollProgress * 500}px)
+        //  rotate(45deg)`}
+        transition='transform 0.2s ease'
+        clipPath={`ellipse(${100 - scrollProgress * 100 + 50}% ${
+          100 - scrollProgress * 100 + 40
+        }% at 100% 100%)`}
+      />
+
       <Flex
         direction='column'
         alignItems='center'

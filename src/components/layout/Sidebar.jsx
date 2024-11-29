@@ -12,7 +12,7 @@ function Sidebar ({
 }) {
   return (
     <Box
-      bg={colors.primary}
+      bg={colors.secondary}
       p={4}
       // display={isOpen ? 'block' : 'none'}
       width={{ base: '100%', md: sideBarWidth }}
@@ -28,6 +28,24 @@ function Sidebar ({
       borderRight='1px solid'
       // borderColor={colors.border}
     >
+    <Box
+      position='absolute'
+      bottom='0'
+      right='0'
+      width='100%'
+      height='100%'
+      zIndex={0}
+      opacity='0.3'
+      bg='transparent'
+        backgroundImage={`radial-gradient(${colors.gradientColor} 2px, transparent 0)`}
+      backgroundSize='15px 13px'
+      // transform={`translateX(${scrollProgress * 400}px)
+      //      translateY(${scrollProgress * 500}px)
+      //  rotate(45deg)`}
+      transition='transform 0.2s ease'
+      clipPath=' polygon(0 0, 100% 50%, 0 100%, 0 50%)'
+    />
+
       <Flex
         height={navBarHeight} // Full height of the Box
         justify='center' // Horizontally center the content

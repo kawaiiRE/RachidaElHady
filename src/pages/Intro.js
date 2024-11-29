@@ -69,12 +69,12 @@ function Intro () {
           fontWeight='bold'
           bg={colors.secondary}
           _hover={{
-            bg:colors.primary,
+            bg: colors.primary,
             transform: 'scale(1.05)',
-            boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+            boxShadow: `0 0 15px ${colors.secondary}`
           }}
           _active={{
-            bg:colors.primary,
+            bg: colors.primary,
             transform: 'scale(1)',
             boxShadow: 'none'
           }}

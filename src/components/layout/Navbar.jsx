@@ -45,7 +45,11 @@ function Navbar ({
       </IconButton>
 
       <Box>
-        <Text fontSize='lg' fontWeight='bold'>
+        <Text
+          fontSize='lg'
+          fontWeight='bold'
+          textShadow={'0 0 10px rgba(255, 255, 255, 1)'}
+        >
           My Professional App
         </Text>
       </Box>

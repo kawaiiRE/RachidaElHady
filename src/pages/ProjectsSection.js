@@ -97,14 +97,41 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
 
   return (
     <>
-      <Heading
-        fontSize='5xl'
-        color={colors.primary}
-        mt={4}
-        textDecoration='underline'
-      >
-        {title}
-      </Heading>
+<Box
+  fontSize="5xl"
+  mt={4}
+  // textDecoration="underline"
+  // sx={{
+    display= 'inline-block'
+    color= 'transparent'
+    background= 'linear-gradient(90deg, #61c5ff, #61c5ff, #ff78a5, #ff78a5, #61c5ff)'
+    backgroundSize= '200% 100%'
+    animation= 'gradientShift 2s linear infinite'
+    WebkitBackgroundClip= 'text'
+    backgroundClip= 'text'  // Add this for non-webkit browsers
+    // textShadow= '0 0 5px rgba(0,0,0,0.3)'
+    // backgroundColor='red'
+          fontWeight='bold'
+  //   'background-color':'green',
+  // }}
+>
+  {title}
+</Box>
+
+<style jsx>
+  {`
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: -200% 50%;
+      }
+    }
+  `}
+</style>
+
+
       <Flex
         direction='row'
         // alignItems='center'
@@ -159,6 +186,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
                 const newTab = window.open(link, '_blank')
                 newTab.focus()
               }}
+              bg={colors.secondary}
             >
               View on Google Play
             </Button>

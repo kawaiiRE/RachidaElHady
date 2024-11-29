@@ -1,12 +1,12 @@
 const commonTheme = {
   // Border colors
-  primary: 'purple.fg',
-  secondary: 'purple.focusRing',
+  primary: 'gray.solid',
+  secondary: 'gray.fg',
   text: 'fg',
   textSecondary: 'fg.muted',
   textInverted: 'fg.inverted',
-  background: 'purple.subtle',
-  backgroundSecondary: 'purple.muted',
+  background: 'bg',
+  backgroundSecondary: 'bg.muted',
   border: 'gray.fg',
   // danger:,
   // success:,
@@ -17,18 +17,14 @@ const commonTheme = {
 const theme = {
   light: {
     ...commonTheme,
-
-    primary: 'purple.800',
-    secondary: 'purple.700',
-    // text: 'fg',
     textSecondary: 'gray.800',
-    // textInverted: 'fg.inverted',
-    // background: 'purple.subtle',
-    // backgroundSecondary: 'purple.muted',
-    // border: 'gray.fg',
+    gradientColor:'white'
+
   },
   dark: {
     ...commonTheme,
+    textSecondary: 'gray.100',
+    gradientColor:'black'
   
   
   }
