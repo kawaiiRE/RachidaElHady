@@ -9,13 +9,11 @@ import ContactSection from './ContactSection'
 function Home () {
   return (
     <Box textAlign='center' >
-      <Intro/>
-      <ExpertiseSection/>
-      <ToolsSection/>
-      <ProjectsSection/>
-      <ContactSection/>
-      {/* <Heading>Welcome to My Portfolio</Heading>
-      <Text mt={4}>Explore my projects and skills!</Text> */}
+      <Intro />
+      <ExpertiseSection />
+      <ToolsSection />
+      <ProjectsSection />
+      <ContactSection />
     </Box>
   )
 }

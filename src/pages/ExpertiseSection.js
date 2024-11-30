@@ -3,12 +3,17 @@ import { Box, Flex, Text, Heading } from '@chakra-ui/react'
 import { useColorMode } from '../components/ui/color-mode'
 
 function ExpertiseSection () {
-  const { colors } = useColorMode()
+  const { colors, fonts } = useColorMode()
   return (
-    <Box py={8} px={4} w='90%' mx='auto'>
+    <Box py={8} w='90%' mx='auto' id='expertiseSection' paddingTop='60px'>
       {/* Main Title */}
       <Box textAlign='center' mb={10}>
-        <Heading fontSize='5xl' fontWeight='bold' color={colors.primary}>
+        <Heading
+          fontSize='5xl'
+          fontWeight='bold'
+          color={colors.primary}
+          fontFamily={fonts.main}
+        >
           Your Vision, Brought to Life
         </Heading>
       </Box>
@@ -20,74 +25,53 @@ function ExpertiseSection () {
         align='stretch'
         gap={8}
       >
-        {/* Block 1 */}
-        <Box
-          flex='1'
-          p={6}
-          border='1px solid'
-          borderColor='gray.200'
-          borderRadius='lg'
-          shadow='md'
-          bg={colors.backgroundSecondary}
-          display='flex'
-          flexDirection='column'
-        >
-          <Heading fontSize='2xl' color={colors.primary} mb={4}>
-            Continuous Support
-          </Heading>
-          <Text color={colors.textSecondary} flex='1'>
-            I ensure your web-based software stays efficient and competitive. By
-            employing DevOps processes, I deliver urgent updates within hours
-            and release new features consistently.
-          </Text>
-        </Box>
-
-        {/* Block 2 */}
-        <Box
-          flex='1'
-          p={6}
-          border='1px solid'
-          borderColor='gray.200'
-          borderRadius='lg'
-          shadow='md'
-          bg={colors.backgroundSecondary}
-          display='flex'
-          flexDirection='column'
-        >
-          <Heading fontSize='2xl' color={colors.primary} mb={4}>
-            Back-End Development
-          </Heading>
-          <Text color={colors.textSecondary} flex='1'>
-            I implement your app’s business logic with proven frameworks,
-            ensuring reliable and fast back-end development. APIs are structured
-            for seamless integrations.
-          </Text>
-        </Box>
-
-        {/* Block 3 */}
-        <Box
-          flex='1'
-          p={6}
-          border='1px solid'
-          borderColor='gray.200'
-          borderRadius='lg'
-          shadow='md'
-          bg={colors.backgroundSecondary}
-          display='flex'
-          flexDirection='column'
-        >
-          <Heading fontSize='2xl' color={colors.primary} mb={4}>
-            Front-End Design & Development
-          </Heading>
-          <Text color={colors.textSecondary} flex='1'>
-            I translate audience insights into user-centric UI designs. Using
-            modern front-end technologies, I bring your app’s look and feel to
-            life, ensuring a seamless experience.
-          </Text>
-        </Box>
+        {ExpertisePreview({
+          title: 'Front-End Design & Development',
+          description:
+            'I translate audience insights into user-centric UI designs. Using modern front-end technologies, I bring your app’s look and feel to life, ensuring a seamless experience.'
+        })}
+        {ExpertisePreview({
+          title: 'Back-End Development',
+          description:
+            'I implement your app’s business logic with proven frameworks, ensuring reliable and fast back-end development. APIs are structured for seamless integrations.'
+        })}
+        {ExpertisePreview({
+          title: 'Continuous Support',
+          description:
+            'I ensure your web-based software stays efficient and competitive. By employing DevOps processes, I deliver urgent updates within hours and release new features consistently.'
+        })}
       </Flex>
     </Box>
   )
 }
 
 export default ExpertiseSection
+
+const ExpertisePreview = ({ title, description }) => {
+  const { colors, fonts } = useColorMode()
+  return (
+    <Box
+      flex='1'
+      p={6}
+      border='1px solid'
+      borderColor={colors.border}
+      borderRadius='lg'
+      shadow='md'
+      bg={colors.backgroundSecondary}
+      display='flex'
+      flexDirection='column'
+    >
+      <Heading
+        fontSize='2xl'
+        color={colors.primary}
+        mb={4}
+        fontFamily={fonts.main}
+      >
+        {title}
+      </Heading>
+      <Text color={colors.textSecondary} flex='1' fontFamily={fonts.main}>
+        {description}
+      </Text>
+    </Box>
+  )
+}

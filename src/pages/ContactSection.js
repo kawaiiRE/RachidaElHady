@@ -6,13 +6,16 @@ import {
   Heading,
   Input,
   Textarea,
-  Text
+  Text,
+  HStack,
+  IconButton
 } from '@chakra-ui/react'
 import emailjs from '@emailjs/browser'
 import { useColorMode } from '../components/ui/color-mode'
+import { FaWhatsapp, FaPhoneAlt, FaCommentDots } from 'react-icons/fa'
 
 const ContactSection = () => {
-  const { colors } = useColorMode()
+  const { colors, fonts } = useColorMode()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,12 +24,14 @@ const ContactSection = () => {
   const [scrollProgress, setScrollProgress] = useState(0)
   useEffect(() => {
     const handleScroll = () => {
-      const section = document.getElementById('contact')
+      const section = document.getElementById('contactSection')
       if (section) {
         const rect = section.getBoundingClientRect()
         console.log('rect.top:', rect.top, 'rect.height:', rect.height) // Debugging output
+        const adjustedTop = rect.top + 300
+
         const progress = Math.min(
-          Math.max((window.innerHeight - rect.top) / rect.height, 0),
+          Math.max((window.innerHeight - adjustedTop) / rect.height, 0),
           1
         )
         setScrollProgress(progress)
@@ -89,22 +94,67 @@ const ContactSection = () => {
       )
   }
 
+  const actions = [
+    {
+      icon: <FaWhatsapp />,
+      color: '#25D366',
+      label: 'Message on WhatsApp',
+      action: phone => window.open(`https://wa.me/${phone}`, '_blank')
+    },
+    {
+      icon: <FaPhoneAlt />,
+      label: 'Call on WhatsApp',
+      color: '#25D366',
+      action: phone => window.open(`https://wa.me/${phone}?call`, '_blank')
+    },
+    {
+      icon: <FaPhoneAlt />,
+      label: 'Call on Dial',
+      color: colors.textInverted,
+      action: phone => (window.location.href = `tel:${phone}`)
+    }
+  ]
+
+  const renderActions = phone => (
+    <HStack spacing={2}>
+      {actions.map(({ icon, label, action, color }, index) => (
+        <IconButton
+          key={index}
+          aria-label={label}
+          onClick={() => action(phone)}
+          colorScheme='gray'
+          // size='sm'
+          variant='ghost'
+          _hover={{
+            transform: 'scale(1.1)',
+            bg: colors.background // Optional hover background color
+          }}
+          color={color}
+        >
+          {icon}
+        </IconButton>
+      ))}
+    </HStack>
+  )
+
   return (
     <Box
-      id='contact'
+      id='contactSection'
       py={16}
       px={8}
-      bg={colors.secondary}
+      bg={colors.backgroundInverted}
       position='relative'
       borderRadius='lg'
+      w='90%'
+      justifySelf='center'
     >
       {/* Background Dashes */}
       <Box
         position='absolute'
         bottom='0'
         right='0'
-        width='100%'
-        height='100%'
+        width='130%'
+        height='130%'
         zIndex={0}
         opacity='0.3'
         bg='transparent'
@@ -114,8 +164,8 @@ const ContactSection = () => {
         //      translateY(${scrollProgress * 500}px)
         //  rotate(45deg)`}
         transition='transform 0.2s ease'
-        clipPath={`ellipse(${100 - scrollProgress * 100 + 50}% ${
-          100 - scrollProgress * 100 + 40
+        clipPath={`ellipse(${100 - scrollProgress * 100 + 10}% ${
+          100 - scrollProgress * 100 + 5
         }% at 100% 100%)`}
       />
 
@@ -126,30 +176,85 @@ const ContactSection = () => {
         maxW='800px'
         mx='auto'
         textAlign='center'
+        zIndex={1}
       >
-        <Heading fontSize='4xl' color={colors.textInverted} mb={6}>
+        <Heading
+          fontSize='4xl'
+          color={colors.textInverted}
+          mb={6}
+          fontFamily={fonts.main}
+        >
           Contact Me
         </Heading>
-        <Text fontSize='lg' color={colors.textInverted} mb={8}>
+        <Text
+          fontSize='lg'
+          color={colors.textInverted}
+          mb={8}
+          fontFamily={fonts.main}
+        >
           Got a question or want to collaborate on a project? I’d love to hear
           from you! Fill out the form below to get in touch.
         </Text>
 
         {/* Contact Methods */}
-        <Box textAlign='center' mb={6}>
-          <Text fontSize='xl' color={colors.textInverted}>
+        <Box textAlign='center' mb={6} zIndex={1}>
+          <Text
+            fontSize='xl'
+            color={colors.textInverted}
+            fontFamily={fonts.main}
+          >
             You can reach me via:
           </Text>
-          <Text fontSize='lg' color={colors.textInverted} mt={2}>
+          {/* <Text
+            fontSize='lg'
+            color={colors.textInverted}
+            mt={2}
+            fontFamily={fonts.main}
+          >
             Phone: <strong>+966 546905184</strong>
           </Text>
-          <Text fontSize='lg' color={colors.textInverted} mt={2}>
+          <Text
+            fontSize='lg'
+            color={colors.textInverted}
+            mt={2}
+            fontFamily={fonts.main}
+          >
             Phone: <strong>+961 81977603</strong>
-          </Text>
-          <Text fontSize='lg' color={colors.textInverted} mt={2}>
+          </Text> */}
+          {/* Phone Numbers */}
+          {['+966546905184', '+96181977603'].map((phone, index) => (
+            <Flex
+              key={index}
+              mt={4}
+              alignItems='center'
+              justifyContent='space-between'
+              gap={4}
+            >
+              <Text
+                fontSize='lg'
+                color={colors.textInverted}
+                mt={2}
+                fontFamily={fonts.main}
+              >
+                Phone: <strong>{phone}</strong>
+              </Text>
+              {renderActions(phone)}
+            </Flex>
+          ))}
+          <Text
+            fontSize='lg'
+            color={colors.textInverted}
+            mt={2}
+            fontFamily={fonts.main}
+          >
             Email: <strong>elhadyrachida71@gmail.com</strong>
           </Text>
-          <Text fontSize='lg' color={colors.textInverted} mt={2}>
+          <Text
+            fontSize='lg'
+            color={colors.textInverted}
+            mt={2}
+            fontFamily={fonts.main}
+          >
             ----------- or -----------
           </Text>
         </Box>
@@ -160,12 +265,13 @@ const ContactSection = () => {
           direction='column'
           w='100%'
           maxW='500px'
-          bg={colors.textInverted}
+          bg={colors.background}
           p={8}
           borderRadius='lg'
           shadow='lg'
           gap={4}
           onSubmit={handleSubmit}
+          zIndex={1}
         >
           <Input
             name='name'
@@ -193,8 +299,16 @@ const ContactSection = () => {
             onChange={handleChange}
             focusBorderColor='teal.400'
           />
-          {error && <Text color='red.500'>{error}</Text>}
-          {success && <Text color='green.500'>{success}</Text>}
+          {error && (
+            <Text color='red.500' fontFamily={fonts.main}>
+              {error}
+            </Text>
+          )}
+          {success && (
+            <Text color='green.500' fontFamily={fonts.main}>
+              {success}
+            </Text>
+          )}
           <Button
             size='lg'
             colorScheme='teal'

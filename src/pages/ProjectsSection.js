@@ -18,15 +18,25 @@ const crazySudokuImages = [
 ]
 
 function ProjectsSection () {
-  const { colors } = useColorMode()
+  const { colors, fonts } = useColorMode()
   return (
-    <Box py={8} px={4} w='90%' mx='auto'>
+    <Box py={8} w='90%' mx='auto' id='projectsSection' paddingBottom='60px'>
       {/* Main Title */}
       <Box textAlign='center' mb={10}>
-        <Heading fontSize='5xl' fontWeight='bold' color={colors.primary}>
+        <Heading
+          fontSize='5xl'
+          fontWeight='bold'
+          color={colors.primary}
+          fontFamily={fonts.main}
+        >
           My Projects
         </Heading>
-        <Text fontSize='xl' color={colors.textSecondary} mt={4}>
+        <Text
+          fontSize='xl'
+          color={colors.textSecondary}
+          mt={4}
+          fontFamily={fonts.main}
+        >
           Explore some of the projects I've worked on.
         </Text>
       </Box>
@@ -58,7 +68,7 @@ export default ProjectsSection
 
 const ProjectPreview = ({ title, description, link, images, bgImg }) => {
   const scrollContainerRef = useRef(null)
-  const { colors } = useColorMode()
+  const { colors, fonts } = useColorMode()
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
 
@@ -96,41 +106,51 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
   }, [])
 
   return (
-    <>
-<Box
-  fontSize="5xl"
-  mt={4}
-  // textDecoration="underline"
-  // sx={{
-    display= 'inline-block'
-    color= 'transparent'
-    background= 'linear-gradient(90deg, #61c5ff, #61c5ff, #ff78a5, #ff78a5, #61c5ff)'
-    backgroundSize= '200% 100%'
-    animation= 'gradientShift 2s linear infinite'
-    WebkitBackgroundClip= 'text'
-    backgroundClip= 'text'  // Add this for non-webkit browsers
-    // textShadow= '0 0 5px rgba(0,0,0,0.3)'
-    // backgroundColor='red'
-          fontWeight='bold'
-  //   'background-color':'green',
-  // }}
->
-  {title}
-</Box>
+    <Flex
+      justify='center'
+      align='center'
+      direction={{ base: 'column', md: 'column' }}
+      // py={8}
+      gap={10}
+      w='100%'
+      mx='auto' // Centers the entire section
+      bg={colors.backgroundSecondary}
+      shadow='md'
+      borderRadius='lg'
+    >
+      <Box
+        fontSize='5xl'
+        mt={4}
+        // textDecoration="underline"
+        // sx={{
+        display='inline-block'
+        color='transparent'
+        background='linear-gradient(90deg, #61c5ff, #61c5ff, #ff78a5, #ff78a5, #61c5ff)'
+        backgroundSize='200% 100%'
+        animation='gradientShift 2s linear infinite'
+        WebkitBackgroundClip='text'
+        backgroundClip='text' // Add this for non-webkit browsers
+        textShadow='0 0 5px rgba(0,0,0,0.3)'
+        // backgroundColor='red'
+        fontWeight='bold'
+        //   'background-color':'green',
+        // }}
+      >
+        Crazy Sudoku
+      </Box>
 
-<style jsx>
-  {`
-    @keyframes gradientShift {
-      0% {
-        background-position: 0% 50%;
-      }
-      100% {
-        background-position: -200% 50%;
-      }
-    }
-  `}
-</style>
-
+      <style jsx>
+        {`
+          @keyframes gradientShift {
+            0% {
+              background-position: 0% 50%;
+            }
+            100% {
+              background-position: -200% 50%;
+            }
+          }
+        `}
+      </style>
 
       <Flex
         direction='row'
@@ -171,7 +191,12 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
               />
             </Box>
           )}
-          <Text fontSize='md' color={colors.textSecondary} mt={2}>
+          <Text
+            fontSize='md'
+            color={colors.textSecondary}
+            mt={2}
+            fontFamily={fonts.main}
+          >
             {description}
           </Text>
           {/* <Link
@@ -180,13 +205,14 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
             > */}
           {link && (
             <Button
-              colorScheme='teal'
+              // colorScheme='teal'
+              bg={colors.backgroundInverted}
               mt={4}
               onClick={() => {
                 const newTab = window.open(link, '_blank')
                 newTab.focus()
               }}
-              bg={colors.secondary}
+              fontFamily={fonts.main}
             >
               View on Google Play
             </Button>
@@ -310,6 +336,6 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
           </Box>
         )}
       </Flex>
-    </>
+    </Flex>
   )
 }

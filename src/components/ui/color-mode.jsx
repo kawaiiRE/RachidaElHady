@@ -24,7 +24,8 @@ export function useColorMode () {
     colorMode: resolvedTheme,
     setColorMode: setTheme,
     toggleColorMode,
-    colors: theme[resolvedTheme ?? 'light']
+    colors: theme[resolvedTheme ?? 'light'],
+    fonts: theme.fonts
   }
 }
 

@@ -13,7 +13,7 @@ import { FiDownload } from 'react-icons/fi'
 import { useColorMode } from '../components/ui/color-mode'
 
 function Intro () {
-  const { colors } = useColorMode()
+  const { colors, fonts } = useColorMode()
   const handleDownloadResume = () => {
     const resumeUrl = '/assets/Rachida_El_Hady_Resume.pdf' // Adjust the path based on your actual file
     const link = document.createElement('a')
@@ -24,6 +24,7 @@ function Intro () {
 
   return (
     <Flex
+      id='introSection'
       justify='center'
       align='center'
       direction={{ base: 'column', md: 'row' }}
@@ -47,10 +48,20 @@ function Intro () {
         justifyContent='center'
         gap={6}
       >
-        <Text fontSize='7xl' fontWeight='bold' mb={4} color={colors.primary}>
+        <Text
+          fontSize='6xl'
+          fontWeight='bold'
+          mb={4}
+          color={colors.primary}
+          fontFamily={fonts.main}
+        >
           The Place Where Innovation Meets Craft
         </Text>
-        <Text fontSize='xl' color={colors.textSecondary}>
+        <Text
+          fontSize='xl'
+          color={colors.textSecondary}
+          fontFamily={fonts.main}
+        >
           Hi, I'm Rachida El Hady! A passionate developer skilled in React,
           React Native, and JavaScript. I craft responsive websites and mobile
           apps, blending modern tech with thoughtful design for seamless user
@@ -67,11 +78,11 @@ function Intro () {
           size='lg'
           fontSize='xl'
           fontWeight='bold'
-          bg={colors.secondary}
+          bg={colors.backgroundInverted}
           _hover={{
             bg: colors.primary,
             transform: 'scale(1.05)',
-            boxShadow: `0 0 15px ${colors.secondary}`
+            boxShadow: `0 0 15px ${colors.backgroundInverted}`
           }}
           _active={{
             bg: colors.primary,
@@ -87,7 +98,8 @@ function Intro () {
         >
           <Text
             as='span'
-            display={{ base: 'none', sm: 'inline-block' }} // Hide text on smaller screens
+            display={{ base: 'none', sm: 'inline-block' }}
+            fontFamily={fonts.main} // Hide text on smaller screens
           >
             Download My Resume
           </Text>
@@ -128,12 +140,28 @@ function Intro () {
         <Box
           w='350px'
           h='450px'
+          right='0px'
+          bottom='0px'
+          position='absolute'
+          borderRadius='lg'
+          zIndex={0}
+          opacity='0.3'
+          bg='transparent'
+          backgroundImage={`radial-gradient(${colors.gradientColor} 2px, transparent 0)`}
+          backgroundSize='15px 13px'
+          clipPath=' polygon(100% 50%, 100% 100%, 100% 100%, 50% 100%)'
+        />
+
+        <Box
+          w='350px'
+          h='450px'
           left='0px'
           top='0px'
           bg='blue'
           position='absolute'
           borderRadius='lg'
         ></Box>
+
         {/* Overlay */}
 
         <Box
@@ -150,7 +178,12 @@ function Intro () {
           px={10}
           py={7}
         >
-          <Text fontSize='lg' fontWeight='bold' textAlign='center'>
+          <Text
+            fontSize='lg'
+            fontWeight='bold'
+            textAlign='center'
+            fontFamily={fonts.main}
+          >
             "The best way to predict the future is to invent it." – Alan Kay
           </Text>
         </Box>

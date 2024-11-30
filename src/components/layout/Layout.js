@@ -8,7 +8,7 @@ const navBarHeight = '70px'
 const sideBarWidth = '200px'
 
 function Layout ({ children }) {
-  const { colorMode, toggleColorMode, colors } = useColorMode()
+  const { colorMode, toggleColorMode, colors, fonts } = useColorMode()
   console.log({ colorMode, colors })
 
   const [isOpen, setIsOpen] = useState(false)
@@ -20,13 +20,14 @@ function Layout ({ children }) {
   const isMobile = useBreakpointValue({ base: true, md: false })
   console.log({ isMobile })
   return (
-    <Box>
+    <Box bg={colors.background}>
       <Sidebar
         isOpen={isOpen}
         onClose={onToggleSidebar}
         colors={colors}
         sideBarWidth={sideBarWidth}
         navBarHeight={navBarHeight}
+        fonts={fonts}
       />
       <Box
         ml={{ base: 0, md: isOpen ? sideBarWidth : '0' }}
@@ -41,8 +42,9 @@ function Layout ({ children }) {
           isSidebarOpen={isOpen}
           navBarHeight={navBarHeight}
           sideBarWidth={sideBarWidth}
+          fonts={fonts}
         />
-        <Box p={4}>{children}</Box>
+        <Box padding='30px 0 30px 0'>{children}</Box>
       </Box>
     </Box>
   )

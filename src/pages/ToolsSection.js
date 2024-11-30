@@ -4,16 +4,25 @@ import { FaReact, FaNodeJs, FaGithub, FaSass, FaDatabase } from 'react-icons/fa'
 import { useColorMode } from '../components/ui/color-mode'
 
 function ToolsSection () {
-  const { colors } = useColorMode()
+  const { colors, fonts } = useColorMode()
   return (
-    <Box py={8} px={4} w='90%' mx='auto'>
+    <Box py={8} w='90%' mx='auto' id='toolsSection'>
       {/* Main Title */}
       <Box textAlign='center' mb={10}>
-        <Heading fontSize='5xl' fontWeight='bold' 
-                color={colors.primary}>
+        <Heading
+          fontSize='5xl'
+          fontWeight='bold'
+          color={colors.primary}
+          fontFamily={fonts.main}
+        >
           Tools of My Trade
         </Heading>
-        <Text fontSize='xl' color={colors.textSecondary} mt={4}>
+        <Text
+          fontSize='xl'
+          color={colors.textSecondary}
+          mt={4}
+          fontFamily={fonts.main}
+        >
           The technologies and tools I use to build modern, efficient, and
           scalable applications.
         </Text>
@@ -23,7 +32,12 @@ function ToolsSection () {
       <Flex direction='row' wrap='wrap' justify='center' align='center' gap={8}>
         {/* Frontend Technologies */}
         <Box w='100%' textAlign='center'>
-          <Heading fontSize='3xl' color={colors.secondary} mb={6}>
+          <Heading
+            fontSize='3xl'
+            color={colors.secondary}
+            mb={6}
+            fontFamily={fonts.main}
+          >
             Frontend Technologies I Prefer To Use
           </Heading>
         </Box>
@@ -73,7 +87,12 @@ function ToolsSection () {
 
         {/* Other Technologies */}
         <Box w='100%' textAlign='center' mt={10}>
-          <Heading fontSize='3xl' color={colors.secondary} mb={6}>
+          <Heading
+            fontSize='3xl'
+            color={colors.secondary}
+            mb={6}
+            fontFamily={fonts.main}
+          >
             Other Technologies
           </Heading>
         </Box>
@@ -113,7 +132,7 @@ function ToolsSection () {
 }
 
 function Technology ({ imgSrc, label }) {
-  const { colors } = useColorMode()
+  const { colors, fonts } = useColorMode()
   return (
     <Flex
       direction='column'
@@ -136,7 +155,13 @@ function Technology ({ imgSrc, label }) {
         alt={label}
         style={{ width: '55px', height: '55px', marginBottom: '12px' }}
       />
-      <Text fontSize='lg' fontWeight='bold' color={colors.textSecondary} textAlign='center'>
+      <Text
+        fontSize='lg'
+        fontWeight='bold'
+        color={colors.textSecondary}
+        textAlign='center'
+        fontFamily={fonts.main}
+      >
         {label}
       </Text>
     </Flex>

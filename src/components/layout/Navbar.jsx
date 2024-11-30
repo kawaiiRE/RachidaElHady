@@ -11,7 +11,8 @@ function Navbar ({
   colors,
   isSidebarOpen,
   navBarHeight,
-  sideBarWidth
+  sideBarWidth,
+  fonts
 }) {
   return (
     <Flex
@@ -40,6 +41,7 @@ function Navbar ({
         rounded='full'
         colorPalette='gray'
         marginRight='20px'
+        filter={`drop-shadow(0 0 4px ${colors.background})`}
       >
         <HiMenuAlt3 />
       </IconButton>
@@ -48,25 +50,12 @@ function Navbar ({
         <Text
           fontSize='lg'
           fontWeight='bold'
-          textShadow={'0 0 10px rgba(255, 255, 255, 1)'}
+          textShadow={`0 0 10px ${colors.background}`}
+          fontFamily={fonts.main}
         >
           My Professional App
         </Text>
       </Box>
-      {/* <Spacer /> */}
-      {/*<Flex align='center'>
-        <Text pr={4}>Welcome, User!</Text>
-      </Flex> */}
-      {/* <IconButton
-        onClick={toggleColorMode}
-        variant='ghost'
-        size={'lg'}
-        rounded='full'
-        colorScheme='gray'
-      >
-        {colorMode === 'light' ? <LuSun /> : <LuMoon />}
-      </IconButton> */}
-      {/* <ColorModeButton /> */}
     </Flex>
   )
 }
