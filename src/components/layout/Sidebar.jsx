@@ -48,6 +48,7 @@ function Sidebar ({
   }
 
   const handleScrollToSection = sectionId => {
+    navigate('/my-portfolio')
     const section = document.getElementById(sectionId)
     if (section) {
       const yOffset = -50 // Adjust the offset as needed
