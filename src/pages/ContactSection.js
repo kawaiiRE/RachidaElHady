@@ -151,7 +151,7 @@ const ContactSection = () => {
       borderRadius='lg'
       w='90%'
       justifySelf='center'
-      overflow='auto'
+      overflow='hidden'
     >
       {/* Background Dashes */}
       <Box
