@@ -11,7 +11,6 @@ const isMobile = () =>
   )
 
   const handleOpenNewTab = (link) => {
-    console.log({link})
     const newTab = window.open(link, '_blank')
     if (newTab) {
       newTab.focus()
@@ -75,7 +74,7 @@ export function GithubButton () {
       color={colors.textInverted}
       _hover={{ transform: 'scale(1.2)' }} // Slightly enlarge on hover
       transition='transform 0.2s ease'
-      onClick={() => handleOpenNewTab('https://github.com/your-profile')}
+      onClick={() => handleOpenNewTab('https://github.com/kawaiiRE')}
       cursor='pointer'
     />
   )

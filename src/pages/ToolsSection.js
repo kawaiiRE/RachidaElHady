@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Flex, Text, Icon, Heading } from '@chakra-ui/react'
+import { Box, Flex, Text, Icon, Heading, Image } from '@chakra-ui/react'
 import { FaReact, FaNodeJs, FaGithub, FaSass, FaDatabase } from 'react-icons/fa'
 import { useColorMode } from '../components/ui/color-mode'
 
@@ -9,16 +9,16 @@ function ToolsSection () {
     <Box py={8} w='90%' mx='auto' id='toolsSection'>
       {/* Main Title */}
       <Box textAlign='center' mb={10}>
-        <Heading
-          fontSize='5xl'
+        <Text
+          fontSize={fonts.sizes.title}
           fontWeight='bold'
           color={colors.primary}
           fontFamily={fonts.main}
         >
           Tools of My Trade
-        </Heading>
+        </Text>
         <Text
-          fontSize='xl'
+          fontSize={fonts.sizes.text}
           color={colors.textSecondary}
           mt={4}
           fontFamily={fonts.main}
@@ -32,14 +32,15 @@ function ToolsSection () {
       <Flex direction='row' wrap='wrap' justify='center' align='center' gap={8}>
         {/* Frontend Technologies */}
         <Box w='100%' textAlign='center'>
-          <Heading
-            fontSize='3xl'
+          <Text
+            fontSize={fonts.sizes.subTitle}
             color={colors.secondary}
             mb={6}
             fontFamily={fonts.main}
+            fontWeight='bold'
           >
             Frontend Technologies I Prefer To Use
-          </Heading>
+          </Text>
         </Box>
         <Flex gap={8} wrap='wrap' justify='center'>
           <Technology
@@ -86,15 +87,15 @@ function ToolsSection () {
         </Flex>
 
         {/* Other Technologies */}
-        <Box w='100%' textAlign='center' mt={10}>
-          <Heading
-            fontSize='3xl'
+        <Box w='100%' textAlign='center' mt={6}>
+          <Text
+            fontSize={fonts.sizes.subTitle}
             color={colors.secondary}
             mb={6}
             fontFamily={fonts.main}
           >
             Other Technologies
-          </Heading>
+          </Text>
         </Box>
         <Flex gap={4} wrap='wrap' justify='center' p={4}>
           <Technology
@@ -139,8 +140,8 @@ function Technology ({ imgSrc, label }) {
       align='center'
       justify='center'
       p={4}
-      w='150px'
-      h='150px'
+      w={fonts.sizes.toolsSize}
+      h={fonts.sizes.toolsSize}
       bg={colors.background}
       borderRadius='lg'
       shadow='md'
@@ -150,13 +151,17 @@ function Technology ({ imgSrc, label }) {
         transition: '0.3s'
       }}
     >
-      <img
+      <Image
         src={imgSrc}
         alt={label}
-        style={{ width: '55px', height: '55px', marginBottom: '12px' }}
+        width={fonts.sizes.toolsImg}
+        height={fonts.sizes.toolsImg}
+        style={{
+          marginBottom: '12px'
+        }}
       />
       <Text
-        fontSize='lg'
+        fontSize={fonts.sizes.toolsText}
         fontWeight='bold'
         color={colors.textSecondary}
         textAlign='center'

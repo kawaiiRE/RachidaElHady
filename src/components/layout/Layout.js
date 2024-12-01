@@ -3,13 +3,15 @@ import { Box, useDisclosure, useBreakpointValue } from '@chakra-ui/react'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import { useColorMode } from '../ui/color-mode'
+import usePageViews from '../common/usePageViews'
 
 const navBarHeight = '70px'
 const sideBarWidth = '200px'
 
 function Layout ({ children }) {
+  usePageViews()
   const { colorMode, toggleColorMode, colors, fonts } = useColorMode()
-  console.log({ colorMode, colors })
+  // console.log({ colorMode, colors })
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -18,28 +20,62 @@ function Layout ({ children }) {
   }
 
   const isMobile = useBreakpointValue({ base: true, md: false })
-  console.log({ isMobile })
+  // console.log({ isMobile })
   return (
     <Box bg={colors.background}>
-      <Sidebar
+      {/* <Sidebar
         isOpen={isOpen}
+        isMobile={isMobile}
         onClose={onToggleSidebar}
         colors={colors}
         sideBarWidth={sideBarWidth}
         navBarHeight={navBarHeight}
         fonts={fonts}
+        position={isMobile ? 'fixed' : 'relative'}
+        top={isMobile ? 0 : 'auto'}
+        zIndex={isMobile ? 999 : 'auto'}
+        height={isMobile ? '100vh' : 'auto'}
+        width={isMobile ? '100%' : sideBarWidth}
+      /> */}
+      <Box
+        position={isMobile ? 'fixed' : 'relative'}
+        top={isMobile ? 0 : 'auto'}
+        zIndex={isMobile ? 1000 : 'auto'}
+        height={isMobile ? '100vh' : 'auto'}
+        width={isMobile ? (isOpen ? '100%' : '0') : sideBarWidth}
+        transition="opacity 0.3s ease-in-out" //
+        overflowX='hidden'
+        onClick={isMobile ? onToggleSidebar : undefined}
+        bg='rgba(0, 0, 0, 0.3)'
+      />
+      <Sidebar
+        isOpen={isOpen}
+        isMobile={isMobile}
+        onClose={onToggleSidebar}
+        colors={colors}
+        sideBarWidth={sideBarWidth}
+        navBarHeight={navBarHeight}
+        fonts={fonts}
+        position={isMobile ? 'fixed' : 'relative'}
+        top={isMobile ? 0 : 'auto'}
+        zIndex={isMobile ? 999 : 'auto'}
+        height={isMobile ? '100vh' : 'auto'}
+        width={isMobile ? '100%' : sideBarWidth}
       />
       <Box
         ml={{ base: 0, md: isOpen ? sideBarWidth : '0' }}
         transition='margin 0.3s ease-in-out'
         paddingTop={navBarHeight}
+        pt={{ base: '60px', md: navBarHeight }}
+        zIndex={0}
       >
         <Navbar
+          isMobile={isMobile}
           onToggleSidebar={onToggleSidebar}
           colorMode={colorMode}
           toggleColorMode={toggleColorMode}
           colors={colors}
-          isSidebarOpen={isOpen}
+          isSidebarOpen={isMobile ? false : isOpen}
           navBarHeight={navBarHeight}
           sideBarWidth={sideBarWidth}
           fonts={fonts}

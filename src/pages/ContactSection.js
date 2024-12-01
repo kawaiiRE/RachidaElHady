@@ -35,7 +35,6 @@ const ContactSection = () => {
       const section = document.getElementById('contactSection')
       if (section) {
         const rect = section.getBoundingClientRect()
-        console.log('rect.top:', rect.top, 'rect.height:', rect.height) // Debugging output
         const adjustedTop = rect.top + 300
 
         const progress = Math.min(
@@ -152,6 +151,7 @@ const ContactSection = () => {
       borderRadius='lg'
       w='90%'
       justifySelf='center'
+      overflow='auto'
     >
       {/* Background Dashes */}
       <Box
@@ -183,16 +183,16 @@ const ContactSection = () => {
         textAlign='center'
         zIndex={1}
       >
-        <Heading
-          fontSize='4xl'
+        <Text
+          fontSize={fonts.sizes.titleSec}
           color={colors.textInverted}
           mb={6}
           fontFamily={fonts.main}
         >
           Contact Me
-        </Heading>
+        </Text>
         <Text
-          fontSize='lg'
+          fontSize={fonts.sizes.toolsText}
           color={colors.textInverted}
           mb={8}
           fontFamily={fonts.main}
@@ -204,7 +204,7 @@ const ContactSection = () => {
         {/* Contact Methods */}
         <Box textAlign='center' mb={6} zIndex={1}>
           <Text
-            fontSize='xl'
+            fontSize={fonts.sizes.text}
             color={colors.textInverted}
             fontFamily={fonts.main}
           >
@@ -236,7 +236,7 @@ const ContactSection = () => {
               gap={4}
             >
               <Text
-                fontSize='lg'
+                fontSize={fonts.sizes.toolsText}
                 color={colors.textInverted}
                 mt={2}
                 fontFamily={fonts.main}
@@ -262,7 +262,7 @@ const ContactSection = () => {
             gap={4}
           >
             <Text
-              fontSize='lg'
+              fontSize={fonts.sizes.toolsText}
               color={colors.textInverted}
               mt={2}
               fontFamily={fonts.main}
@@ -310,7 +310,7 @@ const ContactSection = () => {
             <GithubButton />
           </Flex>
           <Text
-            fontSize='lg'
+            fontSize={fonts.sizes.toolsText}
             color={colors.textInverted}
             mt={2}
             fontFamily={fonts.main}
@@ -370,7 +370,7 @@ const ContactSection = () => {
             </Text>
           )}
           <Button
-            size='lg'
+            fontSize={fonts.sizes.toolsText}
             colorScheme='teal'
             type='submit'
             _hover={{ bg: colors.primary }}

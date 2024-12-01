@@ -23,16 +23,16 @@ function ProjectsSection () {
     <Box py={8} w='90%' mx='auto' id='projectsSection' paddingBottom='60px'>
       {/* Main Title */}
       <Box textAlign='center' mb={10}>
-        <Heading
-          fontSize='5xl'
+        <Text
+          fontSize={fonts.sizes.title}
           fontWeight='bold'
           color={colors.primary}
           fontFamily={fonts.main}
         >
           My Projects
-        </Heading>
+        </Text>
         <Text
-          fontSize='xl'
+          fontSize={fonts.sizes.text}
           color={colors.textSecondary}
           mt={4}
           fontFamily={fonts.main}
@@ -80,13 +80,28 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
       setCanScrollRight(scrollLeft + clientWidth < scrollWidth)
     }
   }
-
   const scroll = direction => {
     if (scrollContainerRef.current) {
-      const scrollAmount =
-        scrollContainerRef.current.firstChild?.offsetWidth || 300 // Default to 300px
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
+      const container = scrollContainerRef.current
+
+      // Get the width of the container
+      const containerWidth = container.offsetWidth
+
+      // Get the width of the first child item (assume all items have the same width)
+      const itemWidth = container.firstChild?.offsetWidth || 300 // Default to 300px
+
+      // Calculate the amount to scroll based on item width
+      const scrollCount = containerWidth / itemWidth
+      const scrollAmount = scrollCount * itemWidth + (3 *  scrollCount)
+
+      // Check if we need to scroll left or right
+      const scrollDirection =
+        direction === 'left' ? -scrollAmount : scrollAmount
+      console.log({ containerWidth, itemWidth, scrollCount, scrollAmount })
+
+      // Scroll by the calculated amount
+      container.scrollBy({
+        left: scrollDirection,
         behavior: 'smooth'
       })
     }
@@ -119,7 +134,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
       borderRadius='lg'
     >
       <Box
-        fontSize='5xl'
+        fontSize={fonts.sizes.title}
         mt={4}
         // textDecoration="underline"
         // sx={{
@@ -153,7 +168,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
       </style>
 
       <Flex
-        direction='row'
+        direction={{ base: 'column', md: 'row' }}
         // alignItems='center'
         alignItems='stretch'
         justifyContent='space-between'
@@ -164,7 +179,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
       >
         {/* Project Content */}
         <Box
-          w={images ? '30%' : '100%'}
+          w={{ base: '100%', md: images ? '30%' : '100%' }}
           // display='flex'
           display='flex'
           flexDirection='column'
@@ -192,20 +207,15 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
             </Box>
           )}
           <Text
-            fontSize='md'
+            fontSize={fonts.sizes.subText}
             color={colors.textSecondary}
             mt={2}
             fontFamily={fonts.main}
           >
             {description}
           </Text>
-          {/* <Link
-              href='https://play.google.com/store/apps/details?id=com.kawaiire.crazysudoku'
-              isExternal
-            > */}
           {link && (
             <Button
-              // colorScheme='teal'
               bg={colors.backgroundInverted}
               mt={4}
               onClick={() => {
@@ -217,47 +227,10 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
               View on Google Play
             </Button>
           )}
-          {/* </Link> */}
         </Box>
 
-        {/* Project Image */}
-        {/* {images && (
-          <Box
-            overflowX='scroll'
-            display='flex'
-            w='70%'
-            sx={{
-              '::-webkit-scrollbar': { display: 'none' }
-            }}
-            gap={3}
-            // bg='gray.200'
-          >
-            {images.map((src, index) => (
-              <Box
-                key={index}
-                flexShrink={0}
-                // w='70%'
-                mx='auto'
-                borderRadius='lg'
-                textAlign='center'
-                display='flex'
-                alignItems='center'
-                justifyContent='center'
-              >
-                <Image
-                  src={src}
-                  alt={`${title} Preview ${index + 1}`}
-                  w='200px'
-                  h='auto'
-                  borderRadius='lg'
-                />
-              </Box>
-            ))}
-          </Box>
-        )} */}
-
         {images && (
-          <Box position='relative' w='70%'>
+          <Box position='relative' w={{ base: '100%', md: '70%' }}>
             {canScrollLeft && (
               <Button
                 position='absolute'

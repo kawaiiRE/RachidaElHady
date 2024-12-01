@@ -8,14 +8,14 @@ function ExpertiseSection () {
     <Box py={8} w='90%' mx='auto' id='expertiseSection' paddingTop='60px'>
       {/* Main Title */}
       <Box textAlign='center' mb={10}>
-        <Heading
-          fontSize='5xl'
+        <Text
+          fontSize={fonts.sizes.title}
           fontWeight='bold'
           color={colors.primary}
           fontFamily={fonts.main}
         >
           Your Vision, Brought to Life
-        </Heading>
+        </Text>
       </Box>
 
       {/* Row of Expertise Blocks */}
@@ -61,15 +61,21 @@ const ExpertisePreview = ({ title, description }) => {
       display='flex'
       flexDirection='column'
     >
-      <Heading
-        fontSize='2xl'
+      <Text
+        fontWeight='bold'
+        fontSize={fonts.sizes.subTitle}
         color={colors.primary}
         mb={4}
         fontFamily={fonts.main}
       >
         {title}
-      </Heading>
-      <Text color={colors.textSecondary} flex='1' fontFamily={fonts.main}>
+      </Text>
+      <Text
+        color={colors.textSecondary}
+        flex='1'
+        fontFamily={fonts.main}
+        fontSize={fonts.sizes.subText}
+      >
         {description}
       </Text>
     </Box>

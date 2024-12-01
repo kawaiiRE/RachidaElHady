@@ -14,8 +14,9 @@ import { useColorMode } from '../components/ui/color-mode'
 
 function Intro () {
   const { colors, fonts } = useColorMode()
+
   const handleDownloadResume = () => {
-    const resumeUrl = '/assets/Rachida_El_Hady_Resume.pdf' // Adjust the path based on your actual file
+    const resumeUrl = '/assets/files/Rachida-CV.pdf' // Adjust the path based on your actual file
     const link = document.createElement('a')
     link.href = resumeUrl
     link.download = 'Rachida_El_Hady_Resume.pdf'
@@ -49,7 +50,7 @@ function Intro () {
         gap={6}
       >
         <Text
-          fontSize='6xl'
+          fontSize={fonts.sizes.mainTitle}
           fontWeight='bold'
           mb={4}
           color={colors.primary}
@@ -58,7 +59,7 @@ function Intro () {
           The Place Where Innovation Meets Craft
         </Text>
         <Text
-          fontSize='xl'
+          fontSize={fonts.sizes.text}
           color={colors.textSecondary}
           fontFamily={fonts.main}
         >
@@ -76,7 +77,7 @@ function Intro () {
           onClick={handleDownloadResume}
           colorScheme='teal'
           size='lg'
-          fontSize='xl'
+          fontSize={fonts.sizes.text}
           fontWeight='bold'
           bg={colors.backgroundInverted}
           _hover={{
@@ -98,18 +99,19 @@ function Intro () {
         >
           <Text
             as='span'
-            display={{ base: 'none', sm: 'inline-block' }}
-            fontFamily={fonts.main} // Hide text on smaller screens
+            display={{ base: 'inline-block', sm: 'inline-block' }}
+            fontFamily={fonts.main}
+            fontSize={fonts.sizes.text}
           >
             Download My Resume
           </Text>
-          <Icon
+          {/* <Icon
             // as={FiDownload}
             display={{ base: 'inline-block', sm: 'none' }} // Show only icon on smaller screens
             boxSize={6}
           >
             <FiDownload />
-          </Icon>
+          </Icon> */}
         </Button>
       </Box>
 
@@ -122,14 +124,14 @@ function Intro () {
           objectFit='cover'
         /> */}
       <Box
-        w='400px'
+        w={{ base: '100%', sm: '100%', md: '400px' }}
         h='500px'
         // bg='red'
         position='relative'
         borderRadius='lg'
       >
         <Box
-          w='350px'
+          w={{ base: '90%', sm: '90%', md: '350px' }}
           h='450px'
           right='0px'
           bottom='0px'
@@ -138,7 +140,7 @@ function Intro () {
           borderRadius='lg'
         ></Box>
         <Box
-          w='350px'
+          w={{ base: '90%', sm: '90%', md: '350px' }}
           h='450px'
           right='0px'
           bottom='0px'
@@ -153,7 +155,7 @@ function Intro () {
         />
 
         <Box
-          w='350px'
+          w={{ base: '90%', sm: '90%', md: '350px' }}
           h='450px'
           left='0px'
           top='0px'
@@ -168,7 +170,7 @@ function Intro () {
           position='absolute'
           bottom='25px'
           right='70px'
-          w='400px'
+          w={{ base: '90%', sm: '90%', md: '400px' }}
           //   h='40%'
           bg='rgba(0, 0, 0, 0.4)'
           color='white'
@@ -179,7 +181,7 @@ function Intro () {
           py={7}
         >
           <Text
-            fontSize='lg'
+            fontSize={fonts.sizes.text}
             fontWeight='bold'
             textAlign='center'
             fontFamily={fonts.main}

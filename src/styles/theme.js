@@ -1,4 +1,4 @@
-import "@fontsource/montserrat";
+import '@fontsource/montserrat'
 
 const commonTheme = {
   // Border colors
@@ -34,7 +34,34 @@ const theme = {
     backgroundSecondary: '#011627'
   },
   fonts: {
-    main: "'Montserrat', Italic"
+    main: "'Montserrat', Italic",
+    sizes: {
+      mainTitle: {
+        base: '3xl',
+        sm: '4xl',
+        md: '6xl'
+      },
+      title: {
+        base: '3xl',
+        sm: '4xl',
+        md: '5xl'
+      },
+      titleSec: {
+        base: '2xl',
+        sm: '3xl',
+        md: '4xl'
+      },
+      subTitle: {
+        base: 'lg',
+        sm: 'xl',
+        md: '2xl'
+      },
+      text: { base: 'md', sm: 'lg', md: 'xl' },
+      subText: { base: 'sm', sm: 'sm', md: 'md' },
+      toolsText: { base: 'sm', sm: 'md', md: 'lg' },
+      toolsSize: { base: '90px', sm: '120px', md: '150px' },
+      toolsImg: { base: '35px', sm: '45px', md: '55px' },
+    }
   }
 }
 export default theme

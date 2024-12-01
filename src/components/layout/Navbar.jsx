@@ -24,7 +24,7 @@ function Navbar ({
       top={0}
       // left={0}
       right={0}
-      zIndex={1000} // Ensures navbar is on top
+      zIndex={999} // Ensures navbar is on top
       p={4}
       align='center'
       width={isSidebarOpen ? `calc(100% - ${sideBarWidth})` : '100%'}
@@ -53,7 +53,7 @@ function Navbar ({
           textShadow={`0 0 10px ${colors.background}`}
           fontFamily={fonts.main}
         >
-          My Professional App
+          Rachida El Hady
         </Text>
       </Box>
     </Flex>

@@ -1,25 +1,38 @@
 import React, { useState } from 'react'
-import { Box, VStack, Link, Flex, HStack, Button } from '@chakra-ui/react'
+import {
+  Box,
+  VStack,
+  Link,
+  Flex,
+  HStack,
+  Text,
+  IconButton
+} from '@chakra-ui/react'
 import { ColorModeButton } from '../ui/color-mode'
 import { FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
-import {
-  DialogBody,
-  DialogCloseTrigger,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-  DialogBackdrop
-} from '../ui/dialog'
+// import {
+//   DialogBody,
+//   DialogCloseTrigger,
+//   DialogContent,
+//   DialogFooter,
+//   DialogHeader,
+//   DialogRoot,
+//   DialogTitle,
+//   DialogTrigger,
+//   DialogBackdrop
+// } from '../ui/dialog'
 import { numbers } from '../common/predefined'
-import {EmailButton, GithubButton, LinkedinButton} from '../common/icons/Buttons'
+import {
+  EmailButton,
+  GithubButton,
+  LinkedinButton
+} from '../common/icons/Buttons'
+import { IoIosClose } from 'react-icons/io'
 
 const projects = [
-  { name: 'Crazy Sudoku', path: '/projects/crazySudoku' },
-  { name: 'Local Business Website', path: '/projects/local-business' }
+  { name: 'Crazy Sudoku', path: '/projects/crazySudoku' }
+  // { name: 'Local Business Website', path: '/projects/local-business' }
   // Add more projects as needed
 ]
 
@@ -27,27 +40,21 @@ function Sidebar ({
   isOpen = false,
   onClose,
   colors,
+  fonts,
   navBarHeight,
-  sideBarWidth
+  sideBarWidth,
+  isMobile
 }) {
   const navigate = useNavigate()
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-  // Phone numbers
-  const lebaneseNumber = '+96181977603'
-  const saudiNumber = '+966546905184'
-
   // Open the dialog
-  const openDialog = () => {
-    setIsDialogOpen(true)
-  }
-
-  // Close the dialog
-  const closeDialog = () => {
-    setIsDialogOpen(false)
+  const toggleDialog = () => {
+    setIsDialogOpen(!isDialogOpen)
   }
 
   const handleScrollToSection = sectionId => {
+    onClose()
     navigate('/my-portfolio')
     const section = document.getElementById(sectionId)
     if (section) {
@@ -63,13 +70,12 @@ function Sidebar ({
   }
 
   const handleOpenNewTab = (link, closeTheDialog) => {
-    console.log({link})
     const newTab = window.open(link, '_blank')
     if (newTab) {
       newTab.focus()
     }
     if (closeTheDialog) {
-      closeDialog()
+      toggleDialog()
     }
   }
 
@@ -93,12 +99,19 @@ function Sidebar ({
       bg={colors.backgroundInverted}
       p={4}
       // display={isOpen ? 'block' : 'none'}
-      width={{ base: '100%', md: sideBarWidth }}
+      width={{ base: '70%', md: sideBarWidth }}
       height='100vh'
       position='fixed'
       top={0}
       left={0}
-      zIndex={999}
+      // {...(isMobile
+      //   ? {
+      //       right: 0
+      //     }
+      //   : {
+      //       left: 0
+      //     })}
+      zIndex={1001}
       transition='all 0.3s ease-in-out'
       transform={isOpen ? 'translateX(0)' : 'translateX(-100%)'}
       // paddingTop='70px'
@@ -129,7 +142,38 @@ function Sidebar ({
         justify='center' // Horizontally center the content
         align='center' // Vertically center the content
       >
-        <ColorModeButton />
+        {isMobile ? (
+          <HStack spacing={10} justifyContent='space-evenly' w='100%'>
+            <Text
+              fontSize='lg'
+              fontWeight='bold'
+              // textShadow={`0 0 10px ${colors.background}`}
+              color={colors.textInverted}
+              fontFamily={fonts.main}
+            >
+              Rachida El Hady
+            </Text>
+            <ColorModeButton />
+            <IconButton
+              aria-label='Menu'
+              // icon={<HiMenuAlt3 />}
+              variant='ghost'
+              onClick={onClose}
+              // display={{ base: 'block', md: 'block' }}
+              size={'lg'}
+              rounded='full'
+              colorPalette='gray'
+              color={colors.textInverted}
+              // filter={`drop-shadow(0 0 4px ${colors.background})`}
+            >
+              <IoIosClose />
+            </IconButton>
+          </HStack>
+        ) : (
+          <>
+            <ColorModeButton />
+          </>
+        )}
       </Flex>
       <VStack align='start' spacing={0} mt={8} zIndex={10} gap={0}>
         <Link
@@ -161,7 +205,8 @@ function Sidebar ({
             {projects.map(project => (
               <Link
                 key={project.name}
-                onClick={() => navigate(project.path)}
+                onClick={() => handleScrollToSection('projectsSection')}
+                // onClick={() => navigate(project.path)}
                 {...linkStyles}
                 fontSize='md' // Slightly smaller for sub-links
                 fontWeight='normal'
@@ -189,7 +234,7 @@ function Sidebar ({
         zIndex={10}
       >
         <HStack spacing={8} justifyContent='space-evenly' w='90%'>
-          <LinkedinButton/>
+          <LinkedinButton />
           <GithubButton />
           <Box
             as={FaWhatsapp}
@@ -198,14 +243,15 @@ function Sidebar ({
             _hover={{ transform: 'scale(1.2)' }} // Slightly enlarge on hover
             transition='transform 0.2s ease'
             // onClick={() => handleOpenNewTab('https://wa.me/your-number')}
-            onClick={openDialog}
+            onClick={() =>
+              handleOpenNewTab(`https://wa.me/${numbers.lebanese.number}`)
+            }
             cursor='pointer'
           />
-            <EmailButton withBg={false}/>
+          <EmailButton withBg={false} />
         </HStack>
       </Flex>
-      <DialogRoot open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogBackdrop />
+      {/* <DialogRoot open={isDialogOpen} onOpenChange={(e) => setIsDialogOpen(e?.open)}>
 
         <DialogContent>
           <DialogCloseTrigger />
@@ -217,7 +263,10 @@ function Sidebar ({
               width='100%'
               colorScheme='whatsapp'
               onClick={() =>
-                handleOpenNewTab(`https://wa.me/${numbers.lebanese.number}`, true)
+                handleOpenNewTab(
+                  `https://wa.me/${numbers.lebanese.number}`,
+                  true
+                )
               } // Lebanese number
               mb={2}
             >
@@ -234,10 +283,9 @@ function Sidebar ({
             </Button>
           </DialogBody>
           <DialogFooter>
-            {/* Any additional footer content can go here */}
           </DialogFooter>
         </DialogContent>
-      </DialogRoot>
+      </DialogRoot> */}
     </Box>
   )
 }
