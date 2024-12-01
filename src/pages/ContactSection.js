@@ -8,11 +8,19 @@ import {
   Textarea,
   Text,
   HStack,
-  IconButton
+  IconButton,
+  Icon
 } from '@chakra-ui/react'
 import emailjs from '@emailjs/browser'
 import { useColorMode } from '../components/ui/color-mode'
-import { FaWhatsapp, FaPhoneAlt, FaCommentDots } from 'react-icons/fa'
+import { FaWhatsapp, FaPhoneAlt } from 'react-icons/fa'
+
+import {
+  EmailButton,
+  LinkedinButton,
+  GithubButton
+} from '../components/common/icons/Buttons'
+import { numbers } from '../components/common/predefined'
 
 const ContactSection = () => {
   const { colors, fonts } = useColorMode()
@@ -99,33 +107,30 @@ const ContactSection = () => {
       icon: <FaWhatsapp />,
       color: '#25D366',
       label: 'Message on WhatsApp',
-      action: phone => window.open(`https://wa.me/${phone}`, '_blank')
-    },
-    {
-      icon: <FaPhoneAlt />,
-      label: 'Call on WhatsApp',
-      color: '#25D366',
-      action: phone => window.open(`https://wa.me/${phone}?call`, '_blank')
+      action: phone => window.open(`https://wa.me/${phone}`, '_blank'),
+      size: 'md'
     },
     {
       icon: <FaPhoneAlt />,
       label: 'Call on Dial',
       color: colors.textInverted,
+      onHover: { color: colors.primary },
       action: phone => (window.location.href = `tel:${phone}`)
     }
   ]
 
   const renderActions = phone => (
     <HStack spacing={2}>
-      {actions.map(({ icon, label, action, color }, index) => (
+      {actions.map(({ icon, label, action, color, size, onHover }, index) => (
         <IconButton
           key={index}
           aria-label={label}
           onClick={() => action(phone)}
           colorScheme='gray'
-          // size='sm'
+          size={size ?? 'sm'}
           variant='ghost'
           _hover={{
+            ...onHover,
             transform: 'scale(1.1)',
             bg: colors.background // Optional hover background color
           }}
@@ -222,7 +227,7 @@ const ContactSection = () => {
             Phone: <strong>+961 81977603</strong>
           </Text> */}
           {/* Phone Numbers */}
-          {['+966546905184', '+96181977603'].map((phone, index) => (
+          {Object.values(numbers).map((phone, index) => (
             <Flex
               key={index}
               mt={4}
@@ -235,20 +240,75 @@ const ContactSection = () => {
                 color={colors.textInverted}
                 mt={2}
                 fontFamily={fonts.main}
+                // textShadow={`0 0 2px ${colors.background}`}
               >
-                Phone: <strong>{phone}</strong>
+                Phone:{' '}
+                <Box
+                  as='span'
+                  letterSpacing='wider'
+                  fontWeight='bold'
+                  fontFamily={fonts.main}
+                >
+                  {phone.text}
+                </Box>
               </Text>
-              {renderActions(phone)}
+              {renderActions(phone.number)}
             </Flex>
           ))}
-          <Text
-            fontSize='lg'
-            color={colors.textInverted}
-            mt={2}
-            fontFamily={fonts.main}
+          <Flex
+            mt={4}
+            alignItems='center'
+            justifyContent='space-between'
+            gap={4}
           >
-            Email: <strong>elhadyrachida71@gmail.com</strong>
-          </Text>
+            <Text
+              fontSize='lg'
+              color={colors.textInverted}
+              mt={2}
+              fontFamily={fonts.main}
+            >
+              Email:{' '}
+              <Box
+                as='span'
+                letterSpacing='wider'
+                fontWeight='bold'
+                fontFamily={fonts.main}
+              >
+                elhadyrachida71@gmail.com
+              </Box>
+            </Text>
+            {/* <Box
+              as='a'
+              href='mailto:elhadyrachida71@gmail.com'
+              ml={2}
+              size='md'
+              _hover={{ transform: 'scale(1.1)' }}
+            >
+              <IconButton
+                // aria-label={label}
+                colorScheme='gray'
+                size={'md'}
+                variant='ghost'
+                // _hover={{
+                //   transform: 'scale(1.1)',
+                //   bg: colors.background // Optional hover background color
+                // }}
+                color={colors.textInverted}
+              >
+                <HiOutlineMail />
+              </IconButton>
+            </Box> */}
+            <EmailButton />
+          </Flex>
+          <Flex
+            mt={4}
+            alignItems='center'
+            justifyContent='space-evenly'
+            gap={4}
+          >
+            <LinkedinButton />
+            <GithubButton />
+          </Flex>
           <Text
             fontSize='lg'
             color={colors.textInverted}
