@@ -205,8 +205,8 @@ function Sidebar ({
             {projects.map(project => (
               <Link
                 key={project.name}
-                onClick={() => handleScrollToSection('projectsSection')}
-                // onClick={() => navigate(project.path)}
+                // onClick={() => handleScrollToSection('projectsSection')}
+                onClick={() => navigate(project.path)}
                 {...linkStyles}
                 fontSize='md' // Slightly smaller for sub-links
                 fontWeight='normal'

@@ -8,6 +8,7 @@ import CrazySudokuPrev5 from '../assets/images/CrazySudokuPrev5.png'
 import CrazySudokuBg from '../assets/images/CrazySudokuBg.png'
 import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io'
 import { useColorMode } from '../components/ui/color-mode'
+import { useNavigate } from 'react-router-dom'
 
 const crazySudokuImages = [
   CrazySudokuPrev1,
@@ -48,6 +49,7 @@ function ProjectsSection () {
           description:
             'A mobile app developed using React Native, Expo, and Git. Integrated ads and in-app payments for a fun and challenging Sudoku experience.',
           link: 'https://play.google.com/store/apps/details?id=com.kawaiire.crazysudoku',
+          path: '/projects/crazySudoku',
           images: crazySudokuImages,
           bgImg: CrazySudokuBg
         })}
@@ -66,7 +68,8 @@ function ProjectsSection () {
 
 export default ProjectsSection
 
-const ProjectPreview = ({ title, description, link, images, bgImg }) => {
+const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
+  const navigate = useNavigate()
   const scrollContainerRef = useRef(null)
   const { colors, fonts } = useColorMode()
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -92,7 +95,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
 
       // Calculate the amount to scroll based on item width
       const scrollCount = containerWidth / itemWidth
-      const scrollAmount = scrollCount * itemWidth + (3 *  scrollCount)
+      const scrollAmount = scrollCount * itemWidth + 3 * scrollCount
 
       // Check if we need to scroll left or right
       const scrollDirection =
@@ -132,6 +135,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
       bg={colors.backgroundSecondary}
       shadow='md'
       borderRadius='lg'
+      alignItems='center'
     >
       <Box
         fontSize={fonts.sizes.title}
@@ -145,13 +149,13 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
         animation='gradientShift 2s linear infinite'
         WebkitBackgroundClip='text'
         backgroundClip='text' // Add this for non-webkit browsers
-        textShadow='0 0 5px rgba(0,0,0,0.3)'
+        // textShadow='0 0 2px rgba(0,0,0,0.3)'
         // backgroundColor='red'
         fontWeight='bold'
         //   'background-color':'green',
         // }}
       >
-        Crazy Sudoku
+        {title}
       </Box>
 
       <style jsx>
@@ -206,6 +210,26 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
               />
             </Box>
           )}
+          {path && (
+            <Button
+              color={colors.textInverted}
+              onClick={() => navigate(path)}
+              fontFamily={fonts.main}
+              display='inline-block'
+              // color='transparent'
+              background='linear-gradient(90deg, #61c5ff, #61c5ff, #ff78a5, #ff78a5, #61c5ff)'
+              backgroundSize='200% 100%'
+              animation='gradientShift 2s linear infinite'
+              fontWeight='bold'
+              letterSpacing='wider'
+              w='90%'
+              mt={2}
+              // WebkitBackgroundClip='text'
+              // backgroundClip='text'
+            >
+              View Project
+            </Button>
+          )}
           <Text
             fontSize={fonts.sizes.subText}
             color={colors.textSecondary}
@@ -214,10 +238,12 @@ const ProjectPreview = ({ title, description, link, images, bgImg }) => {
           >
             {description}
           </Text>
+
           {link && (
             <Button
+              mt={2}
+              w='90%'
               bg={colors.backgroundInverted}
-              mt={4}
               onClick={() => {
                 const newTab = window.open(link, '_blank')
                 newTab.focus()
