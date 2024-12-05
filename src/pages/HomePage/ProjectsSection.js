@@ -9,6 +9,7 @@ import CrazySudokuBg from '../../assets/images/CrazySudokuBg.png'
 import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io'
 import { useColorMode } from '../../components/ui/color-mode'
 import { useNavigate } from 'react-router-dom'
+import { AnimatedButton } from '../../components/common/AnimatedButton'
 
 const crazySudokuImages = [
   CrazySudokuPrev1,
@@ -212,24 +213,26 @@ const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
             </Box>
           )}
           {path && (
-            <Button
-              color={colors.textInverted}
+            <AnimatedButton
+              // color={colors.textInverted}
               onClick={() => navigate(path)}
-              fontFamily={fonts.main}
+              // fontFamily={fonts.main}
               display='inline-block'
               // color='transparent'
               background='linear-gradient(90deg, #61c5ff, #61c5ff, #ff78a5, #ff78a5, #61c5ff)'
               backgroundSize='200% 100%'
               animation='gradientShift 2s linear infinite'
-              fontWeight='bold'
+              // fontWeight='bold'
               letterSpacing='wider'
               w='90%'
               mt={2}
               // WebkitBackgroundClip='text'
               // backgroundClip='text'
+              _hover={{ transform: 'scale(1.1)' }}
+              _active={{ transform: 'scale(0.9)' }}
             >
               View Project
-            </Button>
+            </AnimatedButton>
           )}
           <Text
             fontSize={fonts.sizes.subText}
@@ -241,29 +244,29 @@ const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
           </Text>
 
           {link && (
-            <Button
+            <AnimatedButton
               mt={2}
               w='90%'
-              bg={colors.backgroundInverted}
+              // bg={colors.backgroundInverted}
               onClick={() => {
                 const newTab = window.open(link, '_blank')
                 newTab.focus()
               }}
-              fontFamily={fonts.main}
+              // fontFamily={fonts.main}
             >
               View on Google Play
-            </Button>
+            </AnimatedButton>
           )}
         </Box>
 
         {images && (
           <Box position='relative' w={{ base: '100%', md: '70%' }}>
             {canScrollLeft && (
-              <Button
+              <AnimatedButton
                 position='absolute'
                 left='0'
                 top='50%'
-                transform='translateY(-50%)'
+                // transform='translateY(-50%)'
                 zIndex={1}
                 //   bg="teal.500"
                 color={colors.textInverted}
@@ -276,7 +279,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
                 bg='rgba(0, 0, 0, 0.5)'
               >
                 <IoIosArrowDropleft />
-              </Button>
+              </AnimatedButton>
             )}
             <Box
               overflowX='scroll'
@@ -314,11 +317,11 @@ const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
                 ))}
             </Box>
             {canScrollRight && (
-              <Button
+              <AnimatedButton
                 position='absolute'
                 right='0'
                 top='50%'
-                transform='translateY(-50%)'
+                // transform='translateY(-50%)'
                 zIndex={1}
                 //   bg="teal.500"
                 color={colors.textInverted}
@@ -331,7 +334,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
                 bg='rgba(0, 0, 0, 0.5)'
               >
                 <IoIosArrowDropright />
-              </Button>
+              </AnimatedButton>
             )}
           </Box>
         )}

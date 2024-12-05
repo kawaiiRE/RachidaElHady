@@ -21,6 +21,7 @@ import {
   GithubButton
 } from '../../components/common/icons/Buttons'
 import { numbers } from '../../components/common/predefined'
+import { AnimatedButton } from '../../components/common/AnimatedButton'
 
 const ContactSection = () => {
   const { colors, fonts } = useColorMode()
@@ -369,14 +370,15 @@ const ContactSection = () => {
               {success}
             </Text>
           )}
-          <Button
-            fontSize={fonts.sizes.toolsText}
-            colorScheme='teal'
+          <AnimatedButton
+            // fontSize={fonts.sizes.toolsText}
+            // colorScheme='teal'
             type='submit'
-            _hover={{ bg: colors.primary }}
+            // _hover={{ bg: colors.primary }}
+            w='100%'
           >
             Send Message
-          </Button>
+          </AnimatedButton>
         </Flex>
       </Flex>
     </Box>

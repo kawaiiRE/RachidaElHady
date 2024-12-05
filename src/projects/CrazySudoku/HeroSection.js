@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Box, Text, Button } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { useColorMode } from '../../components/ui/color-mode'
+import { RevealingText } from '../../components/common/globalCompoments'
+import { AnimatedButton } from '../../components/common/AnimatedButton'
+import { isMobile } from '../../components/common/predefined'
+import { FiDownload } from 'react-icons/fi'
 
 const MotionText = motion(Text)
 const MotionBox = motion(Box)
@@ -27,6 +31,7 @@ const generateGradientColor = (
 
   return `rgba(${r}, ${g}, ${b}, ${opacity})`
 }
+            const bubbleDiameter = isMobile ? '110px' : '150px'
 
 function HeroSection () {
   const { colors, fonts } = useColorMode()
@@ -91,7 +96,7 @@ function HeroSection () {
       '#ff78a5',
       Math.random()
     )
-    const { top, left } = generateRandomPosition(5, 90, 30)
+    const { top, left } = generateRandomPosition(5, 90, isMobile ? 40 : 30)
     bubble.style.top = top
     bubble.style.left = left
     bubble.style.cursor = 'pointer'
@@ -163,210 +168,283 @@ function HeroSection () {
   }
 
   return (
-    <Box
-      height='500px'
-      position='relative'
-      overflow='hidden'
-      top='-30px'
-      bg='transparent'
-    >
-      <MotionBox
-        position='absolute'
-        width='100%'
-        height='100%'
-        zIndex={0}
-        id='bubbles'
-        key={'bubbles'}
-      >
-        {Array.from({ length: 50 }).map((_, i) => {
-          const randomDelay = Math.random() * 3
-          const bubbleId = `bubble-${i}`
-          const { top, left } = generateRandomPosition(0, 100, 40)
-          return (
-            <MotionBox
-              key={bubbleId}
-              id={bubbleId}
-              position='absolute'
-              width='40px'
-              height='40px'
-              borderRadius='50%'
-              bg={generateGradientColor('#61c5ff', '#ff78a5', Math.random())}
-              top={top}
-              left={left}
-              initial={{ scale: 1, opacity: 1 }}
-              animate={{
-                x: generateRandomKeyframes(100, 5),
-                y: generateRandomKeyframes(100, 5),
-                opacity: 1
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                delay: Math.random() * 1
-              }}
-              onAnimationStart={() => {
-                setTimeout(() => {
-                  const bubble = document.getElementById(bubbleId)
-                  const randomScale = Math.random() * (4.5 - 3) + 3
-                  if (bubble) {
-                    bubble.animate(
-                      [
-                        // { transform: 'scale(1)', opacity: 1 },
-                        {
-                          transform: `scale(${randomScale})`,
-                          opacity: Math.max(0.2, Math.random())
-                        }
-                      ],
-                      { duration: 500, easing: 'ease-out', fill: 'forwards' }
-                    )
-                  }
-                }, Math.random() * 2000)
-              }}
-            />
-          )
-        })}
-      </MotionBox>
-
-      <MotionBox
-        position='absolute'
-        width='100%'
-        height='100%'
-        zIndex={5}
-        id='bubbles-clickable'
-        key={'bubbles-clickable'}
-      >
-        {Array.from({ length: 10 }).map((_, i) => {
-          const bubbleId = `bubble-clickable-${i}`
-          const { top, left } = generateRandomPosition(5, 90, 30)
-          const randomNbFrames = Math.random() * (8 - 3) + 3
-
-          return (
-            <MotionBox
-              key={bubbleId}
-              id={bubbleId}
-              position='absolute'
-              width='40px'
-              height='40px'
-              borderRadius='50%'
-              bg={generateGradientColor('#61c5ff', '#ff78a5', Math.random())}
-              top={top}
-              left={left}
-              initial={{ scale: 1, opacity: 1 }}
-              cursor='pointer'
-              animate={{
-                x: generateRandomKeyframes(100, randomNbFrames),
-                y: generateRandomKeyframes(100, randomNbFrames),
-                opacity: 1
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                delay: Math.random() * 1
-              }}
-              onClick={() => handlePop(bubbleId)}
-            />
-          )
-        })}
-      </MotionBox>
-      <Text
-        zIndex={4}
-        position='absolute'
-        fontWeight='bold'
-        fontSize={fonts.sizes.subTitle}
-        fontFamily={fonts.main}
-        color={colors.textInverted}
-        bottom={-7}
-        left={-3}
-        borderRadius='full'
-        bg={generateGradientColor(
-          '#61c5ff',
-          '#ff78a5',
-          Math.random(),
-          Math.max(0.6, Math.random())
-        )}
-        p={4}
-        // opacity= {Math.max(0.4, Math.random())}
-        width='150px'
-        height='150px'
-        display='flex'
-        alignItems='center'
-        justifyContent='center'
-        textAlign='center'
-        flexDirection='column'
-        lineHeight='1'
-      >
-        <Text mb='0'>Catch</Text>
-        <Text fontSize={fonts.sizes.subText} mb='0'>
-          &
-        </Text>
-        <Text mt='0'>Pop Me!</Text>
-      </Text>
+    <>
       <Box
-        textAlign='center'
-        zIndex={1}
+        height={isMobile ? '400px' : '500px'}
         position='relative'
-        h='100%'
-        alignContent='center'
+        overflow='hidden'
+        top='-30px'
+        bg='transparent'
       >
-        <MotionText
-          // key={`${animationKey}-crazy`}
-          id='crazy-text'
-          display='inline-block'
-          fontSize={fonts.sizes.heroTitle}
-          fontWeight='bold'
-          color='#61c5ff'
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            type: 'spring',
-            stiffness: 400,
-            damping: 14,
-            delay: 1
-          }}
+        {/* Bg Bubbles */}
+        <MotionBox
+          position='absolute'
+          width='100%'
+          height='100%'
+          zIndex={0}
+          id='bubbles'
+          key={'bubbles'}
         >
-          Crazy
-        </MotionText>
-        <MotionText
-          // key={`${animationKey}-sudoku`}
-          id='sudoku-text'
-          as='span'
-          color='#ff78a5'
-          display='inline-block'
-          fontSize={fonts.sizes.heroTitle}
+          {Array.from({ length: isMobile ? 20 : 50 }).map((_, i) => {
+            const randomDelay = Math.random() * 3
+            const bubbleId = `bubble-${i}`
+            const { top, left } = generateRandomPosition(
+              0,
+              100,
+              isMobile ? 50 : 40
+            )
+            const diameter = isMobile ? '20px' : '40px'
+            return (
+              <MotionBox
+                key={bubbleId}
+                id={bubbleId}
+                position='absolute'
+                width={diameter}
+                height={diameter}
+                borderRadius='50%'
+                bg={generateGradientColor('#61c5ff', '#ff78a5', Math.random())}
+                top={top}
+                left={left}
+                initial={{ scale: 1, opacity: 1 }}
+                animate={{
+                  x: generateRandomKeyframes(100, 5),
+                  y: generateRandomKeyframes(100, 5),
+                  opacity: 1
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  delay: Math.random() * 1
+                }}
+                onAnimationStart={() => {
+                  setTimeout(() => {
+                    const bubble = document.getElementById(bubbleId)
+                    const randomScale = Math.random() * (4.5 - 3) + 3
+                    if (bubble) {
+                      bubble.animate(
+                        [
+                          // { transform: 'scale(1)', opacity: 1 },
+                          {
+                            transform: `scale(${randomScale})`,
+                            opacity: Math.max(0.2, Math.random())
+                          }
+                        ],
+                        { duration: 500, easing: 'ease-out', fill: 'forwards' }
+                      )
+                    }
+                  }, Math.random() * 2000)
+                }}
+              />
+            )
+          })}
+        </MotionBox>
+
+        {/* Poppable Bubbles */}
+        <MotionBox
+          position='absolute'
+          width='100%'
+          height='100%'
+          zIndex={5}
+          id='bubbles-clickable'
+          key={'bubbles-clickable'}
+        >
+          {Array.from({ length: isMobile ? 8 : 10 }).map((_, i) => {
+            const bubbleId = `bubble-clickable-${i}`
+            const { top, left } = generateRandomPosition(
+              5,
+              90,
+              isMobile ? 40 : 30
+            )
+            const randomNbFrames = Math.random() * (8 - 3) + 3
+
+            return (
+              <MotionBox
+                key={bubbleId}
+                id={bubbleId}
+                position='absolute'
+                width='40px'
+                height='40px'
+                borderRadius='50%'
+                bg={generateGradientColor('#61c5ff', '#ff78a5', Math.random())}
+                top={top}
+                left={left}
+                initial={{ scale: 1, opacity: 1 }}
+                cursor='pointer'
+                animate={{
+                  x: generateRandomKeyframes(100, randomNbFrames),
+                  y: generateRandomKeyframes(100, randomNbFrames),
+                  opacity: 1
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  delay: Math.random() * 1
+                }}
+                onClick={() => handlePop(bubbleId)}
+              />
+            )
+          })}
+        </MotionBox>
+
+        {/* Pop Me */}
+        <MotionBox
+          zIndex={4}
+          position='absolute'
           fontWeight='bold'
-          initial={{ x: 300, opacity: 0 }}
+          fontSize={fonts.sizes.subTitle}
+          fontFamily={fonts.main}
+          color={colors.textInverted}
+          bottom={isMobile?-3:-7}
+          left={isMobile?-2:-3}
+          borderRadius='full'
+          bg={generateGradientColor(
+            '#61c5ff',
+            '#ff78a5',
+            Math.random(),
+            Math.max(0.8, Math.random())
+          )}
+          p={4}
+          // opacity= {Math.max(0.4, Math.random())}
+          width={bubbleDiameter}
+          height={bubbleDiameter}
+          display='flex'
+          alignItems='center'
+          justifyContent='center'
+          textAlign='center'
+          flexDirection='column'
+          lineHeight='1'
+          initial={{ x: -300, opacity: 0 }}
           animate={{
-            x: [300, 0, -10, 10],
+            x: [-300, 0, 10, 0],
             opacity: 1
           }}
           transition={{
             type: 'spring',
             stiffness: 400,
             damping: 25,
-            delay: 1.5
-          }}
-          onAnimationStart={() => {
-            setTimeout(() => {
-              triggerCrazyBounce()
-            }, 1650)
+            delay: 2
           }}
         >
-          Sudoku
-          <style jsx>
-            {`
-              @keyframes gradientShift {
-                0% {
-                  background-position: 0% 50%;
+          <Text mb='0'>Catch</Text>
+          <Text fontSize={fonts.sizes.subText} mb='0'>
+            &
+          </Text>
+          <Text mt='0'>Pop Me!</Text>
+        </MotionBox>
+
+        {/* Crazy Sudoku */}
+        <Box
+          textAlign='center'
+          zIndex={1}
+          position='relative'
+          h='100%'
+          alignContent='center'
+        >
+          {/* Crazy */}
+          <MotionText
+            // key={`${animationKey}-crazy`}
+            id='crazy-text'
+            display='inline-block'
+            fontSize={fonts.sizes.heroTitle}
+            fontWeight='bold'
+            color='#61c5ff'
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              type: 'spring',
+              stiffness: 400,
+              damping: 14,
+              delay: 1
+            }}
+          >
+            Crazy
+          </MotionText>
+          {/* Sudoku */}
+          <MotionText
+            // key={`${animationKey}-sudoku`}
+            id='sudoku-text'
+            as='span'
+            color='#ff78a5'
+            display='inline-block'
+            fontSize={fonts.sizes.heroTitle}
+            fontWeight='bold'
+            initial={{ x: 300, opacity: 0 }}
+            animate={{
+              x: [300, 0, -10, 10],
+              opacity: 1
+            }}
+            transition={{
+              type: 'spring',
+              stiffness: 400,
+              damping: 25,
+              delay: 1.5
+            }}
+            onAnimationStart={() => {
+              setTimeout(() => {
+                triggerCrazyBounce()
+              }, 1650)
+            }}
+          >
+            Sudoku
+            <style jsx>
+              {`
+                @keyframes gradientShift {
+                  0% {
+                    background-position: 0% 50%;
+                  }
+                  100% {
+                    background-position: -200% 50%;
+                  }
                 }
-                100% {
-                  background-position: -200% 50%;
-                }
-              }
-            `}
-          </style>
-        </MotionText>
+              `}
+            </style>
+          </MotionText>
+        </Box>
       </Box>
-    </Box>
+      <AnimatedButton
+        zIndex={50}
+        position='fixed'
+        bottom={5}
+        right={5}
+        as='span'
+        fontSize={fonts.sizes.subTitle}
+        initial={{ x: 300, opacity: 0 }}
+        animate={{
+          x: [300, 0, -10, 0],
+          opacity: 1
+        }}
+        borderRadius='full'
+        bg={generateGradientColor(
+          '#61c5ff',
+          '#ff78a5',
+          Math.random(),
+          Math.max(0.9, Math.random())
+        )}
+        p={4}
+        width={bubbleDiameter}
+        height={bubbleDiameter}
+        display='flex'
+        alignItems='center'
+        justifyContent='center'
+        textAlign='center'
+        flexDirection='column'
+        lineHeight='1.25'
+        onClick={() => {
+          const newTab = window.open(
+            'https://play.google.com/store/apps/details?id=com.kawaiire.crazysudoku',
+            '_blank'
+          )
+          newTab.focus()
+        }}
+      >
+        {/* Download Now! */}
+        <Text mt='10px' mb='0'>
+          Download
+        </Text>
+        <Text mt='0'>Now!</Text>
+        {/* <FiDownload /> */}
+      </AnimatedButton>
+    </>
   )
 }
 

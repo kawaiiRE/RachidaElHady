@@ -22,7 +22,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 //   DialogTrigger,
 //   DialogBackdrop
 // } from '../ui/dialog'
-import { numbers } from '../common/predefined'
+import { isMobile, numbers } from '../common/predefined'
 import {
   EmailButton,
   GithubButton,
@@ -43,7 +43,6 @@ function Sidebar ({
   fonts,
   navBarHeight,
   sideBarWidth,
-  isMobile
 }) {
   const navigate = useNavigate()
   const location = useLocation()

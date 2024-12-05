@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { FiDownload } from 'react-icons/fi'
 import { useColorMode } from '../../components/ui/color-mode'
+import { AnimatedButton } from '../../components/common/AnimatedButton'
 
 function Intro () {
   const { colors, fonts } = useColorMode()
@@ -73,38 +74,38 @@ function Intro () {
           technical expertise to every project, delivering solutions tailored to
           your goals. */}
         </Text>
-        <Button
+        <AnimatedButton
           onClick={handleDownloadResume}
-          colorScheme='teal'
-          size='lg'
+          // colorScheme='teal'
+          // size='lg'
           fontSize={fonts.sizes.text}
-          fontWeight='bold'
-          bg={colors.backgroundInverted}
-          _hover={{
-            bg: colors.primary,
-            transform: 'scale(1.05)',
-            boxShadow: `0 0 15px ${colors.backgroundInverted}`
-          }}
-          _active={{
-            bg: colors.primary,
-            transform: 'scale(1)',
-            boxShadow: 'none'
-          }}
+          // fontWeight='bold'
+          // bg={colors.backgroundInverted}
+          // _hover={{
+          //   bg: colors.primary,
+          //   transform: 'scale(1.05)',
+          //   boxShadow: `0 0 15px ${colors.backgroundInverted}`
+          // }}
+          // _active={{
+          //   bg: colors.primary,
+          //   transform: 'scale(1)',
+          //   boxShadow: 'none'
+          // }}
           borderRadius='full'
           px={8}
           py={6}
-          leftIcon={<FiDownload />}
-          transition='all 0.3s ease-in-out'
-          w='fit-content'
+          // leftIcon={<FiDownload />}
+          // transition='all 0.3s ease-in-out'
+          // w='fit-content'
         >
-          <Text
+          {/* <Text
             as='span'
             display={{ base: 'inline-block', sm: 'inline-block' }}
             fontFamily={fonts.main}
             fontSize={fonts.sizes.text}
-          >
+          > */}
             Download My Resume
-          </Text>
+          {/* </Text> */}
           {/* <Icon
             // as={FiDownload}
             display={{ base: 'inline-block', sm: 'none' }} // Show only icon on smaller screens
@@ -112,7 +113,7 @@ function Intro () {
           >
             <FiDownload />
           </Icon> */}
-        </Button>
+        </AnimatedButton>
       </Box>
 
       {/* Second Box with an image and text over it */}

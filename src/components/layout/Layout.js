@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import { useColorMode } from '../ui/color-mode'
 import usePageViews from '../common/usePageViews'
+import { isMobile } from '../common/predefined'
 
 const navBarHeight = '70px'
 const sideBarWidth = '200px'
@@ -19,7 +20,7 @@ function Layout ({ children }) {
     setIsOpen(prevState => !prevState)
   }
 
-  const isMobile = useBreakpointValue({ base: true, md: false })
+  // const isMobile = useBreakpointValue({ base: true, md: false })
   // console.log({ isMobile })
   return (
     <Box bg={colors.background}>
@@ -50,7 +51,6 @@ function Layout ({ children }) {
       />
       <Sidebar
         isOpen={isOpen}
-        isMobile={isMobile}
         onClose={onToggleSidebar}
         colors={colors}
         sideBarWidth={sideBarWidth}
@@ -70,7 +70,6 @@ function Layout ({ children }) {
         zIndex={0}
       >
         <Navbar
-          isMobile={isMobile}
           onToggleSidebar={onToggleSidebar}
           colorMode={colorMode}
           toggleColorMode={toggleColorMode}

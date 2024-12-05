@@ -16,15 +16,15 @@ function Navbar ({
 }) {
   return (
     <Flex
-      // bg='rgba(0, 0, 0, 0.3)' // Transparent background with some opacity
-      backdropFilter='blur(10px)' // Apply blur effect
-      _webkitBackdropFilter='blur(10px)' // Safari support
-      boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)' // Optional: Adds subtle shadow
-      position='fixed' // Make the navbar fixed at the top
+      // bg='rgba(0, 0, 0, 0.3)'
+      backdropFilter='blur(10px)' 
+      _webkitBackdropFilter='blur(10px)'
+      boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)'
+      position='fixed'
       top={0}
       // left={0}
       right={0}
-      zIndex={999} // Ensures navbar is on top
+      zIndex={999}
       p={4}
       align='center'
       width={isSidebarOpen ? `calc(100% - ${sideBarWidth})` : '100%'}

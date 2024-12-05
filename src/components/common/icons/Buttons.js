@@ -3,12 +3,10 @@ import { HiOutlineMail } from 'react-icons/hi'
 import { useColorMode } from '../../ui/color-mode'
 import { MdEmail } from 'react-icons/md'
 import { FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa'
+import { isMobile } from '../predefined'
 
 // Function to detect platform
-const isMobile = () =>
-  /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
-    navigator.userAgent
-  )
+
 
   const handleOpenNewTab = (link) => {
     const newTab = window.open(link, '_blank')
@@ -22,7 +20,7 @@ export function EmailButton ({ email = 'elhadyrachida71@gmail.com', withBg = tru
   const { colors, fonts } = useColorMode()
   const handleClick = () => {
     const mailtoLink = `mailto:${email}`
-    if (isMobile()) {
+    if (isMobile) {
       // Open the mail app directly
       window.location.href = mailtoLink
     } else {
