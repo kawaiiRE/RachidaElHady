@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Flex, Text, Heading } from '@chakra-ui/react'
-import { useColorMode } from '../components/ui/color-mode'
+import { useColorMode } from '../../components/ui/color-mode'
 
 function ExpertiseSection () {
   const { colors, fonts } = useColorMode()

@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { ColorModeButton } from '../ui/color-mode'
 import { FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 // import {
 //   DialogBody,
 //   DialogCloseTrigger,
@@ -46,6 +46,7 @@ function Sidebar ({
   isMobile
 }) {
   const navigate = useNavigate()
+  const location = useLocation()
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   // Open the dialog
@@ -54,18 +55,24 @@ function Sidebar ({
   }
 
   const handleScrollToSection = sectionId => {
-    onClose()
-    navigate('/my-portfolio')
-    const section = document.getElementById(sectionId)
-    if (section) {
-      const yOffset = -50 // Adjust the offset as needed
-      const yPosition =
-        section.getBoundingClientRect().top + window.pageYOffset + yOffset
+    if (isMobile) {
+      onClose()
+    }
+    console.log(location.pathname)
+    if (location.pathname !== '/my-portfolio') {
+      navigate('/my-portfolio', { state: { sectionId } })
+    } else {
+      const section = document.getElementById(sectionId)
+      if (section) {
+        const yOffset = -50 // Adjust the offset as needed
+        const yPosition =
+          section.getBoundingClientRect().top + window.pageYOffset + yOffset
 
-      window.scrollTo({
-        top: yPosition,
-        behavior: 'smooth'
-      })
+        window.scrollTo({
+          top: yPosition,
+          behavior: 'smooth'
+        })
+      }
     }
   }
 

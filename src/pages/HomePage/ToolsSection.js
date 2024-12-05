@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Flex, Text, Icon, Heading, Image } from '@chakra-ui/react'
 import { FaReact, FaNodeJs, FaGithub, FaSass, FaDatabase } from 'react-icons/fa'
-import { useColorMode } from '../components/ui/color-mode'
+import { useColorMode } from '../../components/ui/color-mode'
 
 function ToolsSection () {
   const { colors, fonts } = useColorMode()

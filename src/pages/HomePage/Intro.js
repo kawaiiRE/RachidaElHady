@@ -10,13 +10,13 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react'
 import { FiDownload } from 'react-icons/fi'
-import { useColorMode } from '../components/ui/color-mode'
+import { useColorMode } from '../../components/ui/color-mode'
 
 function Intro () {
   const { colors, fonts } = useColorMode()
 
   const handleDownloadResume = () => {
-    const resumeUrl = '/assets/files/Rachida-CV.pdf' // Adjust the path based on your actual file
+    const resumeUrl = '/assets/files/Rachida-CV.pdf'
     const link = document.createElement('a')
     link.href = resumeUrl
     link.download = 'Rachida_El_Hady_Resume.pdf'

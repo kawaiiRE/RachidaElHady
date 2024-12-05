@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Box, Heading, Text, Flex, Link, Button, Image } from '@chakra-ui/react'
-import CrazySudokuPrev1 from '../assets/images/CrazySudokuPrev1.jpg'
-import CrazySudokuPrev2 from '../assets/images/CrazySudokuPrev2.png'
-import CrazySudokuPrev3 from '../assets/images/CrazySudokuPrev3.png'
-import CrazySudokuPrev4 from '../assets/images/CrazySudokuPrev4.jpg'
-import CrazySudokuPrev5 from '../assets/images/CrazySudokuPrev5.png'
-import CrazySudokuBg from '../assets/images/CrazySudokuBg.png'
+import CrazySudokuPrev1 from '../../assets/images/CrazySudokuPrev1.jpg'
+import CrazySudokuPrev2 from '../../assets/images/CrazySudokuPrev2.png'
+import CrazySudokuPrev3 from '../../assets/images/CrazySudokuPrev3.png'
+import CrazySudokuPrev4 from '../../assets/images/CrazySudokuPrev4.jpg'
+import CrazySudokuPrev5 from '../../assets/images/CrazySudokuPrev5.png'
+import CrazySudokuBg from '../../assets/images/CrazySudokuBg.png'
 import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io'
-import { useColorMode } from '../components/ui/color-mode'
+import { useColorMode } from '../../components/ui/color-mode'
 import { useNavigate } from 'react-router-dom'
 
 const crazySudokuImages = [
@@ -188,6 +188,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
           display='flex'
           flexDirection='column'
           justifyContent='space-evenly'
+          alignItems='center'
         >
           {bgImg && (
             <Box

@@ -12,15 +12,15 @@ import {
   Icon
 } from '@chakra-ui/react'
 import emailjs from '@emailjs/browser'
-import { useColorMode } from '../components/ui/color-mode'
+import { useColorMode } from '../../components/ui/color-mode'
 import { FaWhatsapp, FaPhoneAlt } from 'react-icons/fa'
 
 import {
   EmailButton,
   LinkedinButton,
   GithubButton
-} from '../components/common/icons/Buttons'
-import { numbers } from '../components/common/predefined'
+} from '../../components/common/icons/Buttons'
+import { numbers } from '../../components/common/predefined'
 
 const ContactSection = () => {
   const { colors, fonts } = useColorMode()

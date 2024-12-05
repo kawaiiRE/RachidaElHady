@@ -36,6 +36,11 @@ const theme = {
   fonts: {
     main: "'Montserrat', Italic",
     sizes: {
+      heroTitle: {
+        base: '5xl',
+        sm: '6xl',
+        md: '7xl'
+      },
       mainTitle: {
         base: '3xl',
         sm: '4xl',
