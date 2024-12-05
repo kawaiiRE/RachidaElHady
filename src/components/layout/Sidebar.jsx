@@ -75,6 +75,12 @@ function Sidebar ({
     }
   }
 
+  const handleViewProject = project => {
+    if (isMobile) {
+      onClose()
+    }
+    navigate(project.path)
+  }
   const handleOpenNewTab = (link, closeTheDialog) => {
     const newTab = window.open(link, '_blank')
     if (newTab) {
@@ -212,7 +218,7 @@ function Sidebar ({
               <Link
                 key={project.name}
                 // onClick={() => handleScrollToSection('projectsSection')}
-                onClick={() => navigate(project.path)}
+                onClick={() => handleViewProject(project)}
                 {...linkStyles}
                 fontSize='md' // Slightly smaller for sub-links
                 fontWeight='normal'
