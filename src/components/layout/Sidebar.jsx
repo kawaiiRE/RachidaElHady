@@ -58,8 +58,8 @@ function Sidebar ({
       onClose()
     }
     console.log(location.pathname)
-    if (location.pathname !== '/my-portfolio') {
-      navigate('/my-portfolio', { state: { sectionId } })
+    if (location.pathname !== '/RachidaElHady') {
+      navigate('/RachidaElHady', { state: { sectionId } })
     } else {
       const section = document.getElementById(sectionId)
       if (section) {

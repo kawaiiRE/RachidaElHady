@@ -15,7 +15,7 @@ function App () {
     <Router>
       <Layout>
         <Routes>
-          <Route path='/my-portfolio' element={<Home />} />
+          <Route path='/RachidaElHady' element={<Home />} />
           <Route path='/profile' element={<Profile />} />
           <Route path="/projects/crazySudoku" element={<CrazySudoku />} />
           {/* <Route path='/settings' element={<Settings />} />
