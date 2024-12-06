@@ -12,7 +12,7 @@ import CrazySudoku from './projects/CrazySudoku/CrazySudoku'
 
 function App () {
   return (
-    <Router basename="/">
+    <Router basename="/RachidaElHady">
       <Layout>
         <Routes>
           <Route path='/' element={<Home />} />
