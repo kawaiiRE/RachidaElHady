@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/RachidaElHady/static/css/main.b2a39785.css",
-    "main.js": "/RachidaElHady/static/js/main.e7992891.js",
+    "main.js": "/RachidaElHady/static/js/main.7e164840.js",
     "static/media/CrazySudokuPrev3.png": "/RachidaElHady/static/media/CrazySudokuPrev3.38be0ec62c767febbf5a.png",
     "static/media/CrazySudokuPrev2.png": "/RachidaElHady/static/media/CrazySudokuPrev2.4fab21ea7db767184736.png",
     "static/media/CrazySudokuPrev5.png": "/RachidaElHady/static/media/CrazySudokuPrev5.7acb40f99829fd7f1ef5.png",
@@ -20,10 +20,10 @@
     "static/media/montserrat-vietnamese-400-normal.woff2": "/RachidaElHady/static/media/montserrat-vietnamese-400-normal.176348415471f3e062e6.woff2",
     "index.html": "/RachidaElHady/index.html",
     "main.b2a39785.css.map": "/RachidaElHady/static/css/main.b2a39785.css.map",
-    "main.e7992891.js.map": "/RachidaElHady/static/js/main.e7992891.js.map"
+    "main.7e164840.js.map": "/RachidaElHady/static/js/main.7e164840.js.map"
   },
   "entrypoints": [
     "static/css/main.b2a39785.css",
-    "static/js/main.e7992891.js"
+    "static/js/main.7e164840.js"
   ]
 }
