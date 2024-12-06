@@ -31,7 +31,7 @@ import {
 import { IoIosClose } from 'react-icons/io'
 
 const projects = [
-  { name: 'Crazy Sudoku', path: '/RachidaElHady/projects/crazySudoku' }
+  { name: 'Crazy Sudoku', path: '/projects/crazySudoku' }
   // { name: 'Local Business Website', path: '/projects/local-business' }
   // Add more projects as needed
 ]
@@ -58,8 +58,8 @@ function Sidebar ({
       onClose()
     }
     console.log(location.pathname)
-    if (location.pathname !== '/RachidaElHady') {
-      navigate('/RachidaElHady', { state: { sectionId } })
+    if (location.pathname !== '/') {
+      navigate('/', { state: { sectionId } })
     } else {
       const section = document.getElementById(sectionId)
       if (section) {
