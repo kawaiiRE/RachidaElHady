@@ -31,7 +31,7 @@ import {
 import { IoIosClose } from 'react-icons/io'
 
 const projects = [
-  { name: 'Crazy Sudoku', path: '/projects/crazySudoku' }
+  { name: 'Crazy Sudoku', path: '/RachidaElHady/projects/crazySudoku' }
   // { name: 'Local Business Website', path: '/projects/local-business' }
   // Add more projects as needed
 ]

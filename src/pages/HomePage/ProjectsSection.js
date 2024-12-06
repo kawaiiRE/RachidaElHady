@@ -50,7 +50,7 @@ function ProjectsSection () {
           description:
             'A mobile app developed using React Native, Expo, and Git. Integrated ads and in-app payments for a fun and challenging Sudoku experience.',
           link: 'https://play.google.com/store/apps/details?id=com.kawaiire.crazysudoku',
-          path: '/projects/crazySudoku',
+          path: '/RachidaElHady/projects/crazySudoku',
           images: crazySudokuImages,
           bgImg: CrazySudokuBg
         })}

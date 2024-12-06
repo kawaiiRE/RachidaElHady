@@ -3,7 +3,7 @@ import Layout from './components/layout/Layout'
 // import Dashboard from './pages/Dashboard'
 import Home from './pages/HomePage/Home'
 import Profile from './pages/Profile'
-import CrazySudoku from './projects/CrazySudoku/CrazySudoku'
+import CrazySudoku from './RachidaElHady/projects/crazySudoku/CrazySudoku'
 // import Settings from './pages/Settings'
 // import Analytics from './pages/Nested/Analytics'
 // import Reports from './pages/Nested/Reports'
@@ -17,7 +17,7 @@ function App () {
         <Routes>
           <Route path='/RachidaElHady' element={<Home />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path="/projects/crazySudoku" element={<CrazySudoku />} />
+          <Route path="/RachidaElHady/projects/crazySudoku" element={<CrazySudoku />} />
           {/* <Route path='/settings' element={<Settings />} />
           <Route path='/analytics' element={<Analytics />} />
           <Route path='/reports' element={<Reports />} /> */}
