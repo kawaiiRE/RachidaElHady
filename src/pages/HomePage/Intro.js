@@ -12,6 +12,7 @@ import {
 import { FiDownload } from 'react-icons/fi'
 import { useColorMode } from '../../components/ui/color-mode'
 import { AnimatedButton } from '../../components/common/AnimatedButton'
+import { AnimatedText } from '../../components/common/AnimatedText'
 
 function Intro () {
   const { colors, fonts } = useColorMode()
@@ -50,7 +51,7 @@ function Intro () {
         justifyContent='center'
         gap={6}
       >
-        <Text
+        {/* <Text
           fontSize={fonts.sizes.mainTitle}
           fontWeight='bold'
           mb={4}
@@ -68,12 +69,30 @@ function Intro () {
           React Native, and JavaScript. I craft responsive websites and mobile
           apps, blending modern tech with thoughtful design for seamless user
           experiences.
+        </Text> */}
           {/* Hi, I’m Rachida El Hady, a dedicated developer with a
           knack for turning ideas into reality. With hands-on experience in
           JavaScript, React, and mobile technologies, I bring creativity and
           technical expertise to every project, delivering solutions tailored to
           your goals. */}
-        </Text>
+        <AnimatedText
+          textArray={['The Place Where Innovation Meets Craft']}
+          fontSize={fonts.sizes.mainTitle}
+          fontWeight='bold'
+          mb={4}
+          color={colors.primary}
+          fontFamily={fonts.main}
+          delay={0}
+        />
+        <AnimatedText
+          textArray={[
+            "Hi, I'm Rachida El Hady! A passionate developer skilled in React, React Native, and JavaScript. I craft responsive websites and mobile apps, blending modern tech with thoughtful design for seamless user experiences."
+          ]}
+          fontSize={fonts.sizes.text}
+          color={colors.textSecondary}
+          fontFamily={fonts.main}
+          delay={0.4}
+        />
         <AnimatedButton
           onClick={handleDownloadResume}
           // colorScheme='teal'

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Box, Text, Button } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { useColorMode } from '../../components/ui/color-mode'
-import { RevealingText } from '../../components/common/globalCompoments'
 import { AnimatedButton } from '../../components/common/AnimatedButton'
 import { isMobile } from '../../components/common/predefined'
 import { FiDownload } from 'react-icons/fi'
+import { AnimatedText } from '../../components/common/AnimatedText'
 
 const MotionText = motion(Text)
 const MotionBox = motion(Box)
@@ -31,7 +31,7 @@ const generateGradientColor = (
 
   return `rgba(${r}, ${g}, ${b}, ${opacity})`
 }
-            const bubbleDiameter = isMobile ? '110px' : '150px'
+const bubbleDiameter = isMobile ? '110px' : '150px'
 
 function HeroSection () {
   const { colors, fonts } = useColorMode()
@@ -294,8 +294,8 @@ function HeroSection () {
           fontSize={fonts.sizes.subTitle}
           fontFamily={fonts.main}
           color={colors.textInverted}
-          bottom={isMobile?-3:-7}
-          left={isMobile?-2:-3}
+          bottom={isMobile ? -3 : -7}
+          left={isMobile ? -2 : -3}
           borderRadius='full'
           bg={generateGradientColor(
             '#61c5ff',
@@ -401,6 +401,27 @@ function HeroSection () {
           </MotionText>
         </Box>
       </Box>
+
+      <AnimatedText
+        textArray={[
+          'Ready to challenge your mind with Crazy Sudoku?',
+        ]}
+        fontSize={fonts.sizes.titleSec}
+          fontWeight='bold'
+        color={colors.text}
+        centerText={true}
+      />
+      <AnimatedText
+        textArray={[
+          'Sharpen your brain and level up your logic!'
+        ]}
+        fontSize={fonts.sizes.subTitle}
+        color={colors.text}
+        centerText={true}
+        delay={0.4}
+      />
+
+      {/* Download Now! */}
       <AnimatedButton
         zIndex={50}
         position='fixed'
@@ -413,6 +434,10 @@ function HeroSection () {
           x: [300, 0, -10, 0],
           opacity: 1
         }}
+        whileHover={{ scale: 1.5 }}
+        transition={{
+          delay: 2
+        }}
         borderRadius='full'
         bg={generateGradientColor(
           '#61c5ff',
@@ -420,6 +445,7 @@ function HeroSection () {
           Math.random(),
           Math.max(0.9, Math.random())
         )}
+        animation='pulseAnimation 2s infinite'
         p={4}
         width={bubbleDiameter}
         height={bubbleDiameter}
@@ -437,13 +463,25 @@ function HeroSection () {
           newTab.focus()
         }}
       >
-        {/* Download Now! */}
         <Text mt='10px' mb='0'>
           Download
         </Text>
         <Text mt='0'>Now!</Text>
-        {/* <FiDownload /> */}
       </AnimatedButton>
+
+      <style jsx>
+        {`
+          @keyframes pulseAnimation {
+            0%,
+            100% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.05);
+            }
+          }
+        `}
+      </style>
     </>
   )
 }
