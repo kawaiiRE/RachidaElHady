@@ -57,7 +57,7 @@ function Sidebar ({
     if (isMobile) {
       onClose()
     }
-    console.log(location.pathname)
+    // console.log(location.pathname)
     if (location.pathname !== '/') {
       navigate('/', { state: { sectionId } })
     } else {

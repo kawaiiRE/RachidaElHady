@@ -101,7 +101,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
       // Check if we need to scroll left or right
       const scrollDirection =
         direction === 'left' ? -scrollAmount : scrollAmount
-      console.log({ containerWidth, itemWidth, scrollCount, scrollAmount })
+      // console.log({ containerWidth, itemWidth, scrollCount, scrollAmount })
 
       // Scroll by the calculated amount
       container.scrollBy({

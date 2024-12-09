@@ -31,6 +31,7 @@ const generateGradientColor = (
 
   return `rgba(${r}, ${g}, ${b}, ${opacity})`
 }
+
 const bubbleDiameter = isMobile ? '110px' : '150px'
 
 function HeroSection () {

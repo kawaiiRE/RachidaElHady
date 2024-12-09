@@ -9,12 +9,14 @@ import GreaterThanIntro from '../../assets/images/GreaterThanIntro.png'
 import DivisionIntro from '../../assets/images/DivisionIntro.png'
 import CirclesIntro from '../../assets/images/CirclesIntro.png'
 import MiniGame from './MiniGames/MiniGame'
+import SudokuCirclesNumbers from './SudokuCirclesNumbers'
 
 const MotionBox = motion(Box)
 
 const gameTypes = [
   {
     name: 'Greater Than',
+    type:'greaterThan',
     pageUrl: '/greater-than',
     imgIntroSrc: GreaterThanIntro,
     imgSrc: GTBg,
@@ -22,6 +24,7 @@ const gameTypes = [
   },
   {
     name: 'Division',
+    type:'division',
     pageUrl: '/division',
     imgIntroSrc: DivisionIntro,
     imgSrc: DivisionBg,
@@ -29,6 +32,7 @@ const gameTypes = [
   },
   {
     name: 'Circles',
+    type:'circles',
     pageUrl: '/circles',
     imgIntroSrc: CirclesIntro,
     imgSrc: CirclesBg,
@@ -45,6 +49,8 @@ const gameTypes = [
 export default function GameTypesSection () {
   const [currentGame, setCurrentGame] = useState(0)
   const [isClicked, setIsClicked] = useState(false)
+  const [isCurrentlyPlayingMiniGame, setIsCurrentlyPlayingMiniGame] =
+    useState(false)
   const navigate = useNavigate()
 
   const changeGameType = index => {
@@ -53,26 +59,48 @@ export default function GameTypesSection () {
   }
 
   useEffect(() => {
-    const intervalTime = isClicked ? 10000000 : 5000000
-    const id = setInterval(() => {
-      setCurrentGame(prev => (prev + 1) % gameTypes.length)
-    }, intervalTime)
+    let id
 
-    if (isClicked) {
-      setTimeout(() => {
-        setIsClicked(false)
-      }, 10000000)
+    if (!isCurrentlyPlayingMiniGame) {
+      const intervalTime = isClicked ? 10000 : 5000
+
+      id = setInterval(() => {
+        setCurrentGame(prev => (prev + 1) % gameTypes.length)
+      }, intervalTime)
+
+      if (isClicked) {
+        setTimeout(() => {
+          setIsClicked(false)
+        }, 10000)
+      }
     }
 
-    return () => clearInterval(id)
-  }, [isClicked])
+    return () => {
+      if (id) {
+        clearInterval(id)
+      }
+    }
+  }, [isClicked, isCurrentlyPlayingMiniGame])
 
   const handlePlayNowClick = () => {
     navigate(gameTypes[currentGame].pageUrl)
   }
 
+  const handleMouseEnter = () => {
+    setIsCurrentlyPlayingMiniGame(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsCurrentlyPlayingMiniGame(false)
+  }
+
   return (
-    <Box textAlign='center' my={10}>
+    <Box
+      textAlign='center'
+      my={10}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {/* Game Selector */}
       <Flex
         justify='center'
@@ -149,12 +177,13 @@ export default function GameTypesSection () {
           position='absolute'
           top='50%'
           left='50%'
-          bg='red'
+          // bg='red'
           height='250px'
           width='250px'
           transform='translate(-50%, -50%)'
         >
-          <MiniGame />
+          <MiniGame gameType={gameTypes[currentGame].type}/>
+          {/* <SudokuCirclesNumbers/> */}
         </Box>
         <Button
           position='absolute'

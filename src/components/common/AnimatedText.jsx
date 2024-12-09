@@ -14,7 +14,7 @@ export const AnimatedText = ({
 }) => {
   const { colors, fonts } = useColorMode()
   const [visibleSentences, setVisibleSentences] = useState([])
-  console.log({ delay })
+  // console.log({ delay })
   useEffect(() => {
     const checkInitialVisibility = () => {
       textArray.forEach((_, index) => {
