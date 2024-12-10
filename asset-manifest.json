@@ -1,9 +1,15 @@
 {
   "files": {
     "main.css": "/RachidaElHady/static/css/main.b2a39785.css",
-    "main.js": "/RachidaElHady/static/js/main.a4d97626.js",
+    "main.js": "/RachidaElHady/static/js/main.222a3b4f.js",
+    "static/media/DivisionBg.png": "/RachidaElHady/static/media/DivisionBg.3c098c0072c9d47a0d22.png",
+    "static/media/GTBg.png": "/RachidaElHady/static/media/GTBg.d603ffb1bd3de69b54ed.png",
+    "static/media/CirclesBg.png": "/RachidaElHady/static/media/CirclesBg.f8e3fbd0847efa9ad8bb.png",
     "static/media/CrazySudokuPrev3.png": "/RachidaElHady/static/media/CrazySudokuPrev3.38be0ec62c767febbf5a.png",
     "static/media/CrazySudokuPrev2.png": "/RachidaElHady/static/media/CrazySudokuPrev2.4fab21ea7db767184736.png",
+    "static/media/CirclesIntro.png": "/RachidaElHady/static/media/CirclesIntro.49c0a9df2386e8b13f9c.png",
+    "static/media/GreaterThanIntro.png": "/RachidaElHady/static/media/GreaterThanIntro.bb2f4079b96069636d7c.png",
+    "static/media/DivisionIntro.png": "/RachidaElHady/static/media/DivisionIntro.4f4cac41d35d2eb82391.png",
     "static/media/CrazySudokuPrev5.png": "/RachidaElHady/static/media/CrazySudokuPrev5.7acb40f99829fd7f1ef5.png",
     "static/media/CrazySudokuBg.png": "/RachidaElHady/static/media/CrazySudokuBg.5514bd3c4a1af4fcd1be.png",
     "static/media/CrazySudokuPrev4.jpg": "/RachidaElHady/static/media/CrazySudokuPrev4.9120c88ae129ba8602c6.jpg",
@@ -20,10 +26,10 @@
     "static/media/montserrat-vietnamese-400-normal.woff2": "/RachidaElHady/static/media/montserrat-vietnamese-400-normal.176348415471f3e062e6.woff2",
     "index.html": "/RachidaElHady/index.html",
     "main.b2a39785.css.map": "/RachidaElHady/static/css/main.b2a39785.css.map",
-    "main.a4d97626.js.map": "/RachidaElHady/static/js/main.a4d97626.js.map"
+    "main.222a3b4f.js.map": "/RachidaElHady/static/js/main.222a3b4f.js.map"
   },
   "entrypoints": [
     "static/css/main.b2a39785.css",
-    "static/js/main.a4d97626.js"
+    "static/js/main.222a3b4f.js"
   ]
 }
