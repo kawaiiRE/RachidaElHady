@@ -12,6 +12,7 @@ import MiniGame from './MiniGames/MiniGame'
 import SudokuCirclesNumbers from './SudokuCirclesNumbers'
 
 const MotionBox = motion(Box)
+const link= 'https://play.google.com/store/apps/details?id=com.kawaiire.crazysudoku'
 
 const gameTypes = [
   {
@@ -193,7 +194,11 @@ export default function GameTypesSection () {
           colorScheme='teal'
           height='50px'
           width='20%'
-          onClick={handlePlayNowClick}
+          // onClick={handlePlayNowClick}
+              onClick={() => {
+                const newTab = window.open(link, '_blank')
+                newTab.focus()
+              }}
         >
           Play Now
         </Button>
