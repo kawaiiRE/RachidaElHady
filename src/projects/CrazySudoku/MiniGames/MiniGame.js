@@ -23,17 +23,23 @@ function MiniGame ({ gameType }) {
   const [isGameDisabled, setIsGameDisabled] = useState(false)
 
   const handleWheel = e => {
+    console.log(e)
+    const decreasing = e.deltaY > 0
     setNum(prev => {
-      const n = getNextNum({ data: puzzleData, currentNum: prev })
+      const n = getNextNum({
+        data: puzzleData,
+        currentNum: prev,
+        smaller: decreasing,
+        forced: true
+      })
       //   console.log({ n })
       return n
     })
   }
 
-
-    // useEffect(() => {
-    //  console.log(puzzleData)
-    // }, [puzzleData])
+  // useEffect(() => {
+  //  console.log(puzzleData)
+  // }, [puzzleData])
 
   const generateRandomArray = () => {
     // console.log({gameType})
@@ -98,7 +104,7 @@ function MiniGame ({ gameType }) {
           currentNum - 1 < range[0] ? range[range.length - 1] : currentNum - 1
       } else {
         // Normal progression, skipping numbers that have reached their limit
-        console.log({counts})
+        console.log({ counts })
         console.log(counts[currentNum])
         // next = currentNum
         // while (counts[next] >= maxOccurrences) {
@@ -158,6 +164,9 @@ function MiniGame ({ gameType }) {
   const puzzle = useMemo(() => generateRandomArray(), [flag, gameType])
 
   const handleButtonPress = async (i, j, key) => {
+    if(gameType === 'circles'&&puzzle[i][j]!==0){
+        return
+    }
     if (num >= 0 && num <= 9) {
       const updatedPuzzle = [...puzzleData]
       updatedPuzzle[i] = [...updatedPuzzle[i]]
