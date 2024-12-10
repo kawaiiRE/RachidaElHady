@@ -8,6 +8,7 @@ import SudokuCirclesNumbers from '../SudokuCirclesNumbers'
 import { checkConflict } from '../functions'
 import { checkForConflicts } from '../functions'
 import { generateCursorSVG } from '../functions'
+import { isMobile } from '../../../components/common/predefined'
 
 const empty = Array.from({ length: 3 }, () => Array(3).fill(0))
 const emptyCircles = Array.from({ length: 2 }, () => Array(4).fill(0))
@@ -164,8 +165,8 @@ function MiniGame ({ gameType }) {
   const puzzle = useMemo(() => generateRandomArray(), [flag, gameType])
 
   const handleButtonPress = async (i, j, key) => {
-    if(gameType === 'circles'&&puzzle[i][j]!==0){
-        return
+    if (gameType === 'circles' && puzzle[i][j] !== 0) {
+      return
     }
     if (num >= 0 && num <= 9) {
       const updatedPuzzle = [...puzzleData]
@@ -224,12 +225,16 @@ function MiniGame ({ gameType }) {
 
   const handleMouseEnter = () => {
     // console.log('handleMouseEnter')
-    disableScroll()
+    if (!isMobile) {
+      disableScroll()
+    }
   }
 
   const handleMouseLeave = () => {
     // console.log('handleMouseLeave')
-    enableScroll()
+    if (!isMobile) {
+      enableScroll()
+    }
   }
 
   const numbers = useMemo(() => {

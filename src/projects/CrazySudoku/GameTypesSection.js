@@ -10,30 +10,39 @@ import DivisionIntro from '../../assets/images/DivisionIntro.png'
 import CirclesIntro from '../../assets/images/CirclesIntro.png'
 import MiniGame from './MiniGames/MiniGame'
 import SudokuCirclesNumbers from './SudokuCirclesNumbers'
+import { isMobile } from '../../components/common/predefined'
+import { AnimatedButton } from '../../components/common/AnimatedButton'
 
 const MotionBox = motion(Box)
-const link= 'https://play.google.com/store/apps/details?id=com.kawaiire.crazysudoku'
+const link =
+  'https://play.google.com/store/apps/details?id=com.kawaiire.crazysudoku'
 
 const gameTypes = [
   {
     name: 'Greater Than',
-    type:'greaterThan',
+    type: 'greaterThan',
     pageUrl: '/greater-than',
     imgIntroSrc: GreaterThanIntro,
     imgSrc: GTBg,
-    bg: 'blue'
+    bg: 'blue',
+    bgStyle: {
+      transform: isMobile ? 'scale(1.5)' : 'none'
+    }
   },
   {
     name: 'Division',
-    type:'division',
+    type: 'division',
     pageUrl: '/division',
     imgIntroSrc: DivisionIntro,
     imgSrc: DivisionBg,
-    bg: 'red'
+    bg: 'red',
+    bgStyle: {
+      transform: isMobile ? 'scale(1.5)' : 'none'
+    }
   },
   {
     name: 'Circles',
-    type:'circles',
+    type: 'circles',
     pageUrl: '/circles',
     imgIntroSrc: CirclesIntro,
     imgSrc: CirclesBg,
@@ -106,7 +115,7 @@ export default function GameTypesSection () {
       <Flex
         justify='center'
         mb={3}
-        width='80%'
+        width={isMobile ? '90%' : '80%'}
         justifyContent='space-between'
         justifySelf='center'
         display='inline-flex'
@@ -116,15 +125,24 @@ export default function GameTypesSection () {
             key={index}
             zIndex={10}
             height='110px'
-            width={currentGame === index ? '35%' : '30%'}
-            p={4}
+            width={
+              isMobile
+                ? currentGame === index
+                  ? '45%'
+                  : '38%'
+                : currentGame === index
+                ? '35%'
+                : '30%'
+            }
+            p={isMobile ? 1 : 4}
             borderRadius='md'
             // bg={game.bg}
             color='white'
             fontSize='lg'
             cursor='pointer'
             position='relative'
-            transform='scale(0.9)'
+            // transform='scale(0.9)'
+            transform={isMobile ? 'none' : 'scale(0.9)'}
             onClick={() => changeGameType(index)}
             whileHover={{ scale: 0.95 }}
             whileTap={{ scale: 0.85 }}
@@ -153,7 +171,7 @@ export default function GameTypesSection () {
         justify='center'
         key={gameTypes[currentGame].name}
         height='450px'
-        width='80%'
+        width={isMobile ? '90%' : '80%'}
         // bg={gameTypes[currentGame].bg}
         borderRadius='md'
         position='relative'
@@ -183,25 +201,52 @@ export default function GameTypesSection () {
           width='250px'
           transform='translate(-50%, -50%)'
         >
-          <MiniGame gameType={gameTypes[currentGame].type}/>
+          <MiniGame gameType={gameTypes[currentGame].type} />
           {/* <SudokuCirclesNumbers/> */}
-        </Box>
-        <Button
+        </Box><Box 
+  display="flex" 
+  justifyContent="center" 
+  alignItems="flex-end" 
+  height="100vh" 
+  width="100%"
+>
+        <AnimatedButton
           position='absolute'
           bottom='20px'
-          left='50%'
-          transform='translateX(-50%)'
+          // left='50%'
+          // transform='translateX(-50%)'
           colorScheme='teal'
           height='50px'
-          width='20%'
+          width={isMobile ? '40%' : '20%'}
           // onClick={handlePlayNowClick}
-              onClick={() => {
-                const newTab = window.open(link, '_blank')
-                newTab.focus()
-              }}
+          onClick={() => {
+            const newTab = window.open(link, '_blank')
+            newTab.focus()
+          }}
+          background='#61c5ff'
+          backgroundSize='200% 100%'
+          animation='backgroundColorShift 4s linear infinite'
+          color='white' // Button text color
+          border='none' // Optional remove border
+          borderRadius='8px' // Optional add rounded corners
         >
           Play Now
-        </Button>
+        </AnimatedButton></Box>
+        <style>
+          {`
+    @keyframes backgroundColorShift {
+      0% {
+        background-color: #61c5ff; /* Blue */
+      }
+      50% {
+        background-color: #ff78a5; /* Pink */
+      }
+      100% {
+        background-color: #61c5ff; /* Blue */
+      }
+    }
+  `}
+        </style>
       </MotionBox>
     </Box>
   )
