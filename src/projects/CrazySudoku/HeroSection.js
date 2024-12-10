@@ -97,7 +97,7 @@ function HeroSection () {
       '#ff78a5',
       Math.random()
     )
-    const { top, left } = generateRandomPosition(5, 90, isMobile ? 40 : 30)
+    const { top, left } = generateRandomPosition(5, 90, isMobile ? 50 : 30)
     bubble.style.top = top
     bubble.style.left = left
     bubble.style.cursor = 'pointer'
@@ -169,8 +169,9 @@ function HeroSection () {
   }
 
   return (
-    <>
+    <Box w='100%' justifyItems='center'>
       <Box
+        w='100%'
         height={isMobile ? '400px' : '500px'}
         position='relative'
         overflow='hidden'
@@ -254,7 +255,7 @@ function HeroSection () {
             const { top, left } = generateRandomPosition(
               5,
               90,
-              isMobile ? 40 : 30
+              isMobile ? 50 : 30
             )
             const randomNbFrames = Math.random() * (8 - 3) + 3
 
@@ -402,26 +403,26 @@ function HeroSection () {
           </MotionText>
         </Box>
       </Box>
-
-      <AnimatedText
-        textArray={[
-          'Ready to challenge your mind with Crazy Sudoku?',
-        ]}
-        fontSize={fonts.sizes.titleSec}
+      <Box
+        w='90%'
+        // display="flex"
+        justifyContent='center'
+      >
+        <AnimatedText
+          textArray={['Ready to challenge your mind with Crazy Sudoku?']}
+          fontSize={fonts.sizes.titleSec}
           fontWeight='bold'
-        color={colors.text}
-        centerText={true}
-      />
-      <AnimatedText
-        textArray={[
-          'Sharpen your brain and level up your logic!'
-        ]}
-        fontSize={fonts.sizes.subTitle}
-        color={colors.text}
-        centerText={true}
-        delay={0.4}
-      />
-
+          color={colors.text}
+          centerText={true}
+        />
+        <AnimatedText
+          textArray={['Sharpen your brain and level up your logic!']}
+          fontSize={fonts.sizes.subTitle}
+          color={colors.text}
+          centerText={true}
+          delay={0.4}
+        />
+      </Box>
       {/* Download Now! */}
       <AnimatedButton
         zIndex={50}
@@ -483,7 +484,7 @@ function HeroSection () {
           }
         `}
       </style>
-    </>
+    </Box>
   )
 }
 
