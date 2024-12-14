@@ -5,7 +5,7 @@ import { useColorMode } from '../../components/ui/color-mode'
 import { AnimatedButton } from '../../components/common/AnimatedButton'
 import { isMobile } from '../../components/common/predefined'
 import { FiDownload } from 'react-icons/fi'
-import { AnimatedText } from '../../components/common/AnimatedText'
+import { AnimatedText } from '../../components/common/TextComponent'
 
 const MotionText = motion(Text)
 const MotionBox = motion(Box)

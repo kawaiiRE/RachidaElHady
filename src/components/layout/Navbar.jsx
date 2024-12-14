@@ -1,8 +1,9 @@
 import React from 'react'
-import { Flex, Spacer, Box, Text, IconButton } from '@chakra-ui/react'
+import { Flex, Spacer, Box, IconButton } from '@chakra-ui/react'
 import { HiMenuAlt3 } from 'react-icons/hi'
 import { LuMoon, LuSun } from 'react-icons/lu'
 import { ColorModeButton } from '../ui/color-mode'
+import { Text } from '../common/TextComponent'
 
 function Navbar ({
   onToggleSidebar,
@@ -51,7 +52,6 @@ function Navbar ({
           fontSize='lg'
           fontWeight='bold'
           textShadow={`0 0 10px ${colors.background}`}
-          fontFamily={fonts.main}
         >
           Rachida El Hady
         </Text>

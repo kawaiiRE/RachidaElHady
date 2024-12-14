@@ -1,13 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Box,
-  VStack,
-  Link,
-  Flex,
-  HStack,
-  Text,
-  IconButton
-} from '@chakra-ui/react'
+import { Box, VStack, Link, Flex, HStack, IconButton } from '@chakra-ui/react'
 import { ColorModeButton } from '../ui/color-mode'
 import { FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -29,6 +21,7 @@ import {
   LinkedinButton
 } from '../common/icons/Buttons'
 import { IoIosClose } from 'react-icons/io'
+import { Text } from '../common/TextComponent'
 
 const projects = [
   { name: 'Crazy Sudoku', path: '/projects/crazySudoku' }
@@ -42,7 +35,7 @@ function Sidebar ({
   colors,
   fonts,
   navBarHeight,
-  sideBarWidth,
+  sideBarWidth
 }) {
   const navigate = useNavigate()
   const location = useLocation()
@@ -103,7 +96,8 @@ function Sidebar ({
       textDecoration: 'none' // Remove underline on hover
     },
     zIndex: 10,
-    width: '100%'
+    width: '100%',
+    fontFamily: fonts.main
   }
 
   return (
@@ -161,7 +155,6 @@ function Sidebar ({
               fontWeight='bold'
               // textShadow={`0 0 10px ${colors.background}`}
               color={colors.textInverted}
-              fontFamily={fonts.main}
             >
               Rachida El Hady
             </Text>
@@ -222,6 +215,7 @@ function Sidebar ({
                 {...linkStyles}
                 fontSize='md' // Slightly smaller for sub-links
                 fontWeight='normal'
+                fontFamily={fonts.main}
               >
                 {project.name}
               </Link>

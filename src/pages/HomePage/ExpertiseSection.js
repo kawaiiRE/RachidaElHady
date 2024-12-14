@@ -1,6 +1,7 @@
 import React from 'react'
-import { Box, Flex, Text, Heading } from '@chakra-ui/react'
+import { Box, Flex, Heading } from '@chakra-ui/react'
 import { useColorMode } from '../../components/ui/color-mode'
+import { Text } from '../../components/common/TextComponent'
 
 function ExpertiseSection () {
   const { colors, fonts } = useColorMode()
@@ -12,7 +13,6 @@ function ExpertiseSection () {
           fontSize={fonts.sizes.title}
           fontWeight='bold'
           color={colors.primary}
-          fontFamily={fonts.main}
         >
           Your Vision, Brought to Life
         </Text>
@@ -66,14 +66,12 @@ const ExpertisePreview = ({ title, description }) => {
         fontSize={fonts.sizes.subTitle}
         color={colors.primary}
         mb={4}
-        fontFamily={fonts.main}
       >
         {title}
       </Text>
       <Text
         color={colors.textSecondary}
         flex='1'
-        fontFamily={fonts.main}
         fontSize={fonts.sizes.subText}
       >
         {description}

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Box, Flex, Text, Icon, Heading, Image } from '@chakra-ui/react'
+import { Box, Flex, Image } from '@chakra-ui/react'
 import { FaReact, FaNodeJs, FaGithub, FaSass, FaDatabase } from 'react-icons/fa'
 import { useColorMode } from '../../components/ui/color-mode'
+import { Text } from '../../components/common/TextComponent'
 
 function ToolsSection () {
   const { colors, fonts } = useColorMode()
@@ -13,16 +14,10 @@ function ToolsSection () {
           fontSize={fonts.sizes.title}
           fontWeight='bold'
           color={colors.primary}
-          fontFamily={fonts.main}
         >
           Tools of My Trade
         </Text>
-        <Text
-          fontSize={fonts.sizes.text}
-          color={colors.textSecondary}
-          mt={4}
-          fontFamily={fonts.main}
-        >
+        <Text fontSize={fonts.sizes.text} color={colors.textSecondary} mt={4}>
           The technologies and tools I use to build modern, efficient, and
           scalable applications.
         </Text>
@@ -36,7 +31,6 @@ function ToolsSection () {
             fontSize={fonts.sizes.subTitle}
             color={colors.secondary}
             mb={6}
-            fontFamily={fonts.main}
             fontWeight='bold'
           >
             Frontend Technologies I Prefer To Use
@@ -92,7 +86,6 @@ function ToolsSection () {
             fontSize={fonts.sizes.subTitle}
             color={colors.secondary}
             mb={6}
-            fontFamily={fonts.main}
           >
             Other Technologies
           </Text>
@@ -165,7 +158,6 @@ function Technology ({ imgSrc, label }) {
         fontWeight='bold'
         color={colors.textSecondary}
         textAlign='center'
-        fontFamily={fonts.main}
       >
         {label}
       </Text>

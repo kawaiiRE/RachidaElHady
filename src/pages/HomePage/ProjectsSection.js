@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Box, Heading, Text, Flex, Link, Button, Image } from '@chakra-ui/react'
+import { Box,Flex, Link, Button, Image } from '@chakra-ui/react'
 import CrazySudokuPrev1 from '../../assets/images/CrazySudokuPrev1.jpg'
 import CrazySudokuPrev2 from '../../assets/images/CrazySudokuPrev2.png'
 import CrazySudokuPrev3 from '../../assets/images/CrazySudokuPrev3.png'
@@ -10,6 +10,7 @@ import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io'
 import { useColorMode } from '../../components/ui/color-mode'
 import { useNavigate } from 'react-router-dom'
 import { AnimatedButton } from '../../components/common/AnimatedButton'
+import { Text } from '../../components/common/TextComponent'
 
 const crazySudokuImages = [
   CrazySudokuPrev1,
@@ -29,7 +30,6 @@ function ProjectsSection () {
           fontSize={fonts.sizes.title}
           fontWeight='bold'
           color={colors.primary}
-          fontFamily={fonts.main}
         >
           My Projects
         </Text>
@@ -37,7 +37,6 @@ function ProjectsSection () {
           fontSize={fonts.sizes.text}
           color={colors.textSecondary}
           mt={4}
-          fontFamily={fonts.main}
         >
           Explore some of the projects I've worked on.
         </Text>
@@ -238,7 +237,6 @@ const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
             fontSize={fonts.sizes.subText}
             color={colors.textSecondary}
             mt={2}
-            fontFamily={fonts.main}
           >
             {description}
           </Text>

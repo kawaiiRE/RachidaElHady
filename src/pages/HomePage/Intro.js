@@ -2,7 +2,6 @@ import React from 'react'
 import {
   Box,
   Flex,
-  Text,
   Image,
   Heading,
   Icon,
@@ -12,7 +11,7 @@ import {
 import { FiDownload } from 'react-icons/fi'
 import { useColorMode } from '../../components/ui/color-mode'
 import { AnimatedButton } from '../../components/common/AnimatedButton'
-import { AnimatedText } from '../../components/common/AnimatedText'
+import { AnimatedText, Text } from '../../components/common/TextComponent'
 
 function Intro () {
   const { colors, fonts } = useColorMode()
@@ -204,7 +203,6 @@ function Intro () {
             fontSize={fonts.sizes.text}
             fontWeight='bold'
             textAlign='center'
-            fontFamily={fonts.main}
           >
             "The best way to predict the future is to invent it." – Alan Kay
           </Text>

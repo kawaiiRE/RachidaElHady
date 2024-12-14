@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Text as ChakraText } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { useColorMode } from '../ui/color-mode'
 
-const MotionText = motion(Text)
+const MotionText = motion(ChakraText)
 
 export const AnimatedText = ({
   textArray,
@@ -109,5 +109,15 @@ export const AnimatedText = ({
         </MotionText>
       ))}
     </Box>
+  )
+}
+
+export const Text = ({ children, ...props }) => {
+  const { colors, fonts } = useColorMode()
+
+  return (
+    <ChakraText color={colors.text} fontFamily={fonts.main} {...props}>
+      {children}
+    </ChakraText>
   )
 }

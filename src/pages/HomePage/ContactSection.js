@@ -6,7 +6,6 @@ import {
   Heading,
   Input,
   Textarea,
-  Text,
   HStack,
   IconButton,
   Icon
@@ -22,6 +21,7 @@ import {
 } from '../../components/common/icons/Buttons'
 import { numbers } from '../../components/common/predefined'
 import { AnimatedButton } from '../../components/common/AnimatedButton'
+import { Text } from '../../components/common/TextComponent'
 
 const ContactSection = () => {
   const { colors, fonts } = useColorMode()
@@ -188,7 +188,6 @@ const ContactSection = () => {
           fontSize={fonts.sizes.titleSec}
           color={colors.textInverted}
           mb={6}
-          fontFamily={fonts.main}
         >
           Contact Me
         </Text>
@@ -196,7 +195,6 @@ const ContactSection = () => {
           fontSize={fonts.sizes.toolsText}
           color={colors.textInverted}
           mb={8}
-          fontFamily={fonts.main}
         >
           Got a question or want to collaborate on a project? I’d love to hear
           from you! Fill out the form below to get in touch.
@@ -207,7 +205,6 @@ const ContactSection = () => {
           <Text
             fontSize={fonts.sizes.text}
             color={colors.textInverted}
-            fontFamily={fonts.main}
           >
             You can reach me via:
           </Text>
@@ -240,7 +237,6 @@ const ContactSection = () => {
                 fontSize={fonts.sizes.toolsText}
                 color={colors.textInverted}
                 mt={2}
-                fontFamily={fonts.main}
                 // textShadow={`0 0 2px ${colors.background}`}
               >
                 Phone:{' '}
@@ -266,14 +262,12 @@ const ContactSection = () => {
               fontSize={fonts.sizes.toolsText}
               color={colors.textInverted}
               mt={2}
-              fontFamily={fonts.main}
             >
               Email:{' '}
               <Box
                 as='span'
                 letterSpacing='wider'
                 fontWeight='bold'
-                fontFamily={fonts.main}
               >
                 elhadyrachida71@gmail.com
               </Box>
@@ -314,7 +308,6 @@ const ContactSection = () => {
             fontSize={fonts.sizes.toolsText}
             color={colors.textInverted}
             mt={2}
-            fontFamily={fonts.main}
           >
             ----------- or -----------
           </Text>
@@ -361,12 +354,12 @@ const ContactSection = () => {
             focusBorderColor='teal.400'
           />
           {error && (
-            <Text color='red.500' fontFamily={fonts.main}>
+            <Text color='red.500'>
               {error}
             </Text>
           )}
           {success && (
-            <Text color='green.500' fontFamily={fonts.main}>
+            <Text color='green.500'>
               {success}
             </Text>
           )}

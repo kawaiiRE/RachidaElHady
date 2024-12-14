@@ -12,6 +12,7 @@ import MiniGame from './MiniGames/MiniGame'
 import SudokuCirclesNumbers from './SudokuCirclesNumbers'
 import { isMobile } from '../../components/common/predefined'
 import { AnimatedButton } from '../../components/common/AnimatedButton'
+import { useColorMode } from '../../components/ui/color-mode'
 
 const MotionBox = motion(Box)
 const link =
@@ -57,6 +58,7 @@ const gameTypes = [
 ]
 
 export default function GameTypesSection () {
+  const { colors, fonts } = useColorMode()
   const [currentGame, setCurrentGame] = useState(0)
   const [isClicked, setIsClicked] = useState(false)
   const [isCurrentlyPlayingMiniGame, setIsCurrentlyPlayingMiniGame] =
@@ -67,6 +69,13 @@ export default function GameTypesSection () {
     setCurrentGame(index)
     setIsClicked(true)
   }
+
+  useEffect(() => {
+    gameTypes.forEach((game) => {
+      const img = new window.Image(); // Use native Image class
+      img.src = game.imgSrc; // Preload the image source
+    });
+  }, [gameTypes]);
 
   useEffect(() => {
     let id
@@ -161,7 +170,7 @@ export default function GameTypesSection () {
               borderRadius='8px'
               // transform='scale(1.5)'
             />
-            {game.name}
+            {/* {game.name} */}
           </MotionBox>
         ))}
       </Flex>
@@ -203,35 +212,38 @@ export default function GameTypesSection () {
         >
           <MiniGame gameType={gameTypes[currentGame].type} />
           {/* <SudokuCirclesNumbers/> */}
-        </Box><Box 
-  display="flex" 
-  justifyContent="center" 
-  alignItems="flex-end" 
-  height="100vh" 
-  width="100%"
->
-        <AnimatedButton
-          position='absolute'
-          bottom='20px'
-          // left='50%'
-          // transform='translateX(-50%)'
-          colorScheme='teal'
-          height='50px'
-          width={isMobile ? '40%' : '20%'}
-          // onClick={handlePlayNowClick}
-          onClick={() => {
-            const newTab = window.open(link, '_blank')
-            newTab.focus()
-          }}
-          background='#61c5ff'
-          backgroundSize='200% 100%'
-          animation='backgroundColorShift 4s linear infinite'
-          color='white' // Button text color
-          border='none' // Optional remove border
-          borderRadius='8px' // Optional add rounded corners
+        </Box>
+        <Box
+          display='flex'
+          justifyContent='center'
+          alignItems='flex-end'
+          height='100vh'
+          width='100%'
         >
-          Play Now
-        </AnimatedButton></Box>
+          <AnimatedButton
+            position='absolute'
+            bottom='20px'
+            // left='50%'
+            // transform='translateX(-50%)'
+            colorScheme='teal'
+            height='50px'
+            width={isMobile ? '40%' : '20%'}
+            // onClick={handlePlayNowClick}
+            onClick={() => {
+              const newTab = window.open(link, '_blank')
+              newTab.focus()
+            }}
+            background='#61c5ff'
+            backgroundSize='200% 100%'
+            animation='backgroundColorShift 4s linear infinite'
+            color='white' // Button text color
+            border='none' // Optional remove border
+            borderRadius='8px' // Optional add rounded corners
+            fontFamily={fonts.main}
+          >
+            Play Now
+          </AnimatedButton>
+        </Box>
         <style>
           {`
     @keyframes backgroundColorShift {

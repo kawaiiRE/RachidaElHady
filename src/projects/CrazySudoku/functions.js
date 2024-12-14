@@ -253,23 +253,7 @@ const convertTo2By4Array = flatArray => {
 
 export const checkConflictForCircles = (i, j, value, puzzleData, isMini) => {
   const arrLength = isMini ? [4, 2] : [8, 4]
-  // if (isMini) {
-  //   puzzleData = convertTo2By4Array(puzzleData)
-  //   if (i === 1 && j === 0) {
-  //     i = 0
-  //     j = 3
-  //   } else if (i === 1 && j === 1) {
-  //     j = 0
-  //   } else if (i === 1 && j === 2) {
-  //     j = 1
-  //   } else if (i === 2 && j === 0) {
-  //     i = 1
-  //     j = 2
-  //   } else if (i === 2 && j === 1) {
-  //     i = 1
-  //     j = 3
-  //   }
-  // }
+
   for (let col = 0; col < arrLength[0]; col++) {
     if (col !== j && puzzleData[i][col] === value) {
       return true
@@ -425,8 +409,8 @@ const boardGenForGreaterThan = (puzzle, colors, arrLength) => {
           borderLeftWidth: isLeftBorderThick ? thick : 0.5,
           borderRightWidth: isRightBorderThick ? thick : 0.5,
           borderColor,
-          width: arrLength === 3 ? '33.2%' : '11.1%',
-          height: arrLength === 3 ? '33.2%' : '11.1%',
+          width: arrLength === 3 ? '33.3%' : '11.1%',
+          height: arrLength === 3 ? '33.3%' : '11.1%',
           backgroundColor: cellColor
         }}
       />
@@ -551,8 +535,8 @@ const boardGenForDivision = (puzzle, colors, difficulty, arrLength) => {
           borderBottomWidth: isBottomBorderThick ? thick : 0.5,
           borderLeftWidth: isLeftBorderThick ? thick : 0.5,
           borderRightWidth: isRightBorderThick ? thick : 0.5,
-          width: arrLength === 3 ? '33.2%' : '11.1%',
-          height: arrLength === 3 ? '33.2%' : '11.1%',
+          width: arrLength === 3 ? '33.3%' : '11.1%',
+          height: arrLength === 3 ? '33.3%' : '11.1%',
           borderColor
         }}
       />
@@ -568,13 +552,6 @@ const boardGenForDivision = (puzzle, colors, difficulty, arrLength) => {
   const checkNum = (i, j) => {
     if (difficulty === 'H' && puzzle[i][j] === 1) {
       // so that it doesnt always put a < or > sign when is hard
-      // function getRandomBoolean() {
-      //   return Math.random() < 0.5; // Adjust the threshold for different probabilities
-      // }
-
-      // // Example usage
-      // const randomValue = getRandomBoolean();
-      // console.log(randomValue); // Output: true or false
       return Math.random() < 0.5
     }
     return puzzle[i][j] === 1
@@ -904,8 +881,8 @@ const SudokuSign = ({ title, signStyle, i, j, isMini }) => {
     <Box
       style={{
         ...styles.squareView,
-        width: isMini ? '33.2%' : '11.1%',
-        height: isMini ? '33.2%' : '11.1%'
+        width: isMini ? '33.3%' : '11.1%',
+        height: isMini ? '33.3%' : '11.1%'
       }}
     >
       <Text
@@ -918,62 +895,6 @@ const SudokuSign = ({ title, signStyle, i, j, isMini }) => {
     </Box>
   )
 }
-
-// const renderCircle = (main, line, i, j, puzzleData, num,queue,currentIndex,checkConflict) => {
-//   const isMatch =
-//     puzzleData[i][j].toString() === num.toString() && puzzleData[i][j] !== 0
-//   const isConflict =
-//     puzzleData[i][j] !== 0 && checkConflict(i, j, puzzleData[i][j])
-//   let isLast = false
-//   if (queue.length > 0 && currentIndex !== -1) {
-//     isLast =
-//       i === queue[currentIndex].i &&
-//       j === queue[currentIndex].j &&
-//       puzzleData[i][j] !== 0
-//   } else {
-//     isLast = false
-//   }
-//   return (
-//     <>
-//       <Path
-//         d={main}
-//         fill={
-//           isLast && isConflict
-//             ? 'rgba(255, 100, 0, 0.9)' //reddish orange
-//             : isConflict
-//             ? 'red'
-//             : isMatch
-//             ? 'rgba(255, 245, 120, 0.9)' //yellow
-//             : colors.background
-//         }
-//         stroke='black'
-//         onPress={() => {
-//           if (num === 0 && puzzleData[i][j] === 0) {
-//           } else if (num === 99 && puzzleData[i][j] === 0) {
-//           }
-//           // if (puzzle[i][j] === 0)
-//           else {
-//             handleButtonPress(i, j, `${i}-${j}`)
-//           }
-//         }}
-//       />
-//       <Path
-//         id={`${i}-${j}`}
-//         d={line}
-//         //  stroke='red'
-//       />
-//       <SvgText
-//         fontSize={puzzleData[i][j] === puzzle[i][j] ? '25' : '20'}
-//         fill={puzzleData[i][j] === puzzle[i][j] ? 'black' : 'blue'}
-//         fontWeight={puzzleData[i][j] === puzzle[i][j] ? 'bold' : 'normal'}
-//       >
-//         <TextPath href={`#${i}-${j}`}>
-//           {puzzleData[i][j] === 0 ? '' : puzzleData[i][j]}
-//         </TextPath>
-//       </SvgText>
-//     </>
-//   )
-// }
 
 const styles = {
   signsHrStyles: {
