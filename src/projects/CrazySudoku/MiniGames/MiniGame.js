@@ -17,6 +17,7 @@ function MiniGame ({ gameType }) {
   const [puzzleData, setPuzzleData] = useState(
     gameType === 'circles' ? emptyCircles : empty
   )
+  const [initGrid, setInitGrid] = useState(emptyCircles)
   const [num, setNum] = useState(1)
   const [flag, setFlag] = useState(false)
   const [isGameCorrect, setIsGameCorrect] = useState(0)
@@ -52,13 +53,21 @@ function MiniGame ({ gameType }) {
       solveSudoku2(grid, numbers)
 
       removeRandomElements(grid, 4)
-      const grid2 = grid.flat()
-      grid2.push(99)
+      // grid2.push(99)
 
       //   setPuzzleData(convertTo3By3Array(grid2))
       //   return convertTo3By3Array(grid2)
       //   console.log({grid})
       setPuzzleData(grid)
+      setInitGrid(grid)
+      const grid2 = grid.flat().filter(num => num === 1).length
+      if (grid2 === 2) {
+        const n = getNextNum({ data: grid, currentNum: 1 })
+        console.log({ n })
+        setNum(n)
+      } else {
+        setNum(1)
+      }
       return grid
     }
     setPuzzleData(empty)
@@ -195,8 +204,19 @@ function MiniGame ({ gameType }) {
         } else {
           setIsGameDisabled(true)
           setTimeout(() => {
-            setPuzzleData(empty)
-            setNum(1)
+            setPuzzleData(gameType === 'circles' ? initGrid : empty)
+            if (gameType === 'circles') {
+              const grid2 = initGrid.flat().filter(num => num === 1).length
+              if (grid2 === 2) {
+                const n = getNextNum({ data: initGrid, currentNum: 1 })
+                console.log({ n })
+                setNum(n)
+              } else {
+                setNum(1)
+              }
+            } else {
+              setNum(1)
+            }
             setIsGameDisabled(false)
           }, 1000)
         }
@@ -270,7 +290,7 @@ function MiniGame ({ gameType }) {
             display='flex'
             justifyContent='center'
             alignItems='center'
-            color={isGameCorrect === 1 ? 'lightgreen' : colors.text}
+            color={isGameCorrect === 1 ? 'lightgreen' : 'black'}
             fontWeight={isGameCorrect === 1 ? 'bold' : 'normal'}
             fontSize={isGameCorrect === 1 ? '25px' : '20px'}
             onWheel={handleWheel}

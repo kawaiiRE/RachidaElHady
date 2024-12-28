@@ -76,7 +76,7 @@ export default function SudokuCirclesNumbers ({
       return null
     }
     const isMatch =
-      puzzleData[i][j].toString() === num.toString() && puzzleData[i][j] !== 0
+      puzzleData[i][j]?.toString() === num?.toString() && puzzleData[i][j] !== 0
     const isConflict =
       puzzleData[i][j] !== 0 &&
       checkConflictForCircles(i, j, puzzleData[i][j], puzzleData, isMini)

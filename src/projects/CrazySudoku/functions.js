@@ -482,7 +482,8 @@ const boardGenForGreaterThan = (puzzle, colors, arrLength) => {
           borderColor={colors.text}
           signStyle={{
             ...styles.signsHrStyles,
-            color: colors.primary,
+            // color: colors.primary,
+            color: 'black',
             width: '99%',
             left: 5
           }}
@@ -498,7 +499,8 @@ const boardGenForGreaterThan = (puzzle, colors, arrLength) => {
           borderColor={colors.text}
           signStyle={{
             ...styles.signsVrStyles,
-            color: colors.primary,
+            // color: colors.primary,
+            color: 'black',
             top: 5,
             right: 1
           }}
@@ -843,7 +845,8 @@ const boardGenForDivision = (puzzle, colors, difficulty, arrLength) => {
           signStyle={{
             ...styles.signsHrStyles,
             left: checkTitle1(hor[i][j]) ? 7 : 5,
-            color: colors.primary,
+            // color: colors.primary,
+            color: 'black',
             width: '99.5%'
           }}
           i={i}
@@ -860,7 +863,8 @@ const boardGenForDivision = (puzzle, colors, difficulty, arrLength) => {
             ...styles.signsVrStyles,
             top: checkTitle1(ver[i][j]) ? 7 : 5,
             right: checkTitle2(ver[i][j]) ? 1 : 0,
-            color: colors.primary
+            // color: colors.primary
+            color: 'black'
           }}
           i={i}
           j={j}
@@ -916,7 +920,7 @@ const styles = {
     width: '100%',
     height: '100%',
     aspectRatio: 1,
-    color: 'red',
+    // color: 'red',
     transform: 'rotate(-90deg)',
     fontSize: 20,
     textAlignVertical: 'center',
