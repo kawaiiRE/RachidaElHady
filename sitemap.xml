@@ -6,11 +6,18 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
 <url>
   <loc>https://kawaiire.github.io/RachidaElHady/</loc>
   <lastmod>2024-12-10T21:32:59+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
 </url>
 
+<url>
+  <loc>https://kawaiire.github.io/RachidaElHady/projects/crazySudoku</loc>
+  <lastmod>2024-12-28T21:32:59+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
 
 </urlset>
