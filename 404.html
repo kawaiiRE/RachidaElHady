@@ -6,6 +6,7 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-SYP80JYZQ9"
     ></script>
+
     <script>
       window.dataLayer = window.dataLayer || []
       function gtag() {
@@ -65,6 +66,7 @@
       )
     </script>
 
+    <meta name="robots" content="index, follow" />
     <title>Rachida El Hady | React Native Developer</title>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -74,18 +76,24 @@
       property="og:title"
       content="Rachida El Hady - React Native Developer"
     />
+    <meta name="title" content="Rachida El Hady - React Native Developer" />
     <meta
-      property="og:description"
+      name="description"
       content="Explore the portfolio and projects of Rachida El Hady, a skilled mobile app developer."
     />
     <meta
-      name="description"
-      content="Welcome to Rachida El Hady's portfolio, showcasing React Native projects and skills."
+      property="og:description"
+      content="Explore the portfolio and projects of Rachida El Hady, a skilled mobile app developer."
     />
 
     <meta
       name="keywords"
       content="Rachida El Hady, React Native Developer, Portfolio, Mobile App Developer"
+    />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      href="https://kawaiire.github.io/RachidaElHady/sitemap.xml"
     />
 
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -103,7 +111,20 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Rachida El Hady</title>
+    <!-- <title>Rachida El Hady</title> -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "Rachida El Hady",
+        "jobTitle": "React Native Developer",
+        "url": "https://kawaiire.github.io/RachidaElHady/",
+        "sameAs": [
+          "https://github.com/RachidaElHady",
+          "https://www.linkedin.com/in/rachida-el-hady-8a5251223/"
+        ]
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
