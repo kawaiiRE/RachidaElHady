@@ -38,6 +38,10 @@ function Intro () {
       shadow='md'
       borderRadius='lg'
     >
+      
+      <Text isHidden={true}>
+          Rachida El Hady | React Native Developer | Github | Frontend Developer
+        </Text>
       {/* First Box with two texts */}
       <Box
         textAlign='left'

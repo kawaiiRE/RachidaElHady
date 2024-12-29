@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Box,Flex, Link, Button, Image } from '@chakra-ui/react'
+import { Box, Flex, Link, Button, Image } from '@chakra-ui/react'
 import CrazySudokuPrev1 from '../../assets/images/CrazySudokuPrev1.jpg'
 import CrazySudokuPrev2 from '../../assets/images/CrazySudokuPrev2.png'
 import CrazySudokuPrev3 from '../../assets/images/CrazySudokuPrev3.png'
@@ -33,11 +33,7 @@ function ProjectsSection () {
         >
           My Projects
         </Text>
-        <Text
-          fontSize={fonts.sizes.text}
-          color={colors.textSecondary}
-          mt={4}
-        >
+        <Text fontSize={fonts.sizes.text} color={colors.textSecondary} mt={4}>
           Explore some of the projects I've worked on.
         </Text>
       </Box>
@@ -156,6 +152,7 @@ const ProjectPreview = ({ title, description, link, images, bgImg, path }) => {
         // }}
       >
         {title}
+        <Text isHidden={true}>{title}</Text>
       </Box>
 
       <style jsx>

@@ -155,6 +155,7 @@ function Sidebar ({
               fontWeight='bold'
               // textShadow={`0 0 10px ${colors.background}`}
               color={colors.textInverted}
+              isTitle={true}
             >
               Rachida El Hady
             </Text>

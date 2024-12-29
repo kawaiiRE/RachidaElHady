@@ -158,6 +158,7 @@ function Technology ({ imgSrc, label }) {
         fontWeight='bold'
         color={colors.textSecondary}
         textAlign='center'
+          isTitle={true}
       >
         {label}
       </Text>

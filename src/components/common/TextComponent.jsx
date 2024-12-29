@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Text as ChakraText } from '@chakra-ui/react'
+import { Box, Text as ChakraText, Heading } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { useColorMode } from '../ui/color-mode'
 
@@ -112,9 +112,32 @@ export const AnimatedText = ({
   )
 }
 
-export const Text = ({ children, ...props }) => {
+export const Text = ({ children, isTitle=false,isHidden=false, as = 'h1', ...props }) => {
   const { colors, fonts } = useColorMode()
-
+  if(isHidden){
+    return(<h1 style={{
+      position: "absolute",
+      width: "1px",
+      height: "1px",
+      overflow: "hidden",
+      clip: "rect(1px, 1px, 1px, 1px)",
+      whiteSpace: "nowrap"
+    }}>
+      {children}
+    </h1>)
+  }
+  if (isTitle) {
+    return (
+      <Heading
+        as={as}
+        color={colors.text}
+        fontFamily={fonts.main}
+        {...props}
+      >
+        {children}
+      </Heading>
+    )
+  }
   return (
     <ChakraText color={colors.text} fontFamily={fonts.main} {...props}>
       {children}

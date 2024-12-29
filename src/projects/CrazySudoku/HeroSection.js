@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Text, Button } from '@chakra-ui/react'
+import { Box,Text as ChakraText,  Button } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { useColorMode } from '../../components/ui/color-mode'
 import { AnimatedButton } from '../../components/common/AnimatedButton'
 import { isMobile } from '../../components/common/predefined'
 import { FiDownload } from 'react-icons/fi'
-import { AnimatedText } from '../../components/common/TextComponent'
+import { AnimatedText, Text } from '../../components/common/TextComponent'
 
-const MotionText = motion(Text)
+const MotionText = motion(ChakraText)
 const MotionBox = motion(Box)
 
 const generateGradientColor = (
@@ -170,6 +170,7 @@ function HeroSection () {
 
   return (
     <Box w='100%' justifyItems='center'>
+      <Text isHidden={true}>Crazy Sudoku Game, catch and pop mini game, crazy sudoku MiniGame, greaterThan greater than, division, circles</Text>
       <Box
         w='100%'
         height={isMobile ? '400px' : '500px'}

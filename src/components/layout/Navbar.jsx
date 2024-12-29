@@ -52,6 +52,7 @@ function Navbar ({
           fontSize='lg'
           fontWeight='bold'
           textShadow={`0 0 10px ${colors.background}`}
+          isTitle={true}
         >
           Rachida El Hady
         </Text>
