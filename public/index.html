@@ -6,6 +6,7 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-SYP80JYZQ9"
     ></script>
+
     <script>
       window.dataLayer = window.dataLayer || []
       function gtag() {
@@ -15,7 +16,7 @@
 
       gtag('config', 'G-SYP80JYZQ9')
     </script>
-    
+
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
@@ -28,19 +29,25 @@
       // When the single page app is loaded further down in this file,
       // the correct url will be waiting in the browser's history for
       // the single page app to route accordingly.
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
+      ;(function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          )
         }
-      }(window.location))
+      })(window.location)
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
-     
+
     <title>Rachida El Hady | React Native Developer</title>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -54,7 +61,10 @@
       property="og:description"
       content="Explore the portfolio and projects of Rachida El Hady, a skilled mobile app developer."
     />
-    <meta name="description" content="Welcome to Rachida El Hady's portfolio, showcasing React Native projects and skills." />
+    <meta
+      name="description"
+      content="Welcome to Rachida El Hady's portfolio, showcasing React Native projects and skills."
+    />
 
     <meta
       name="keywords"
@@ -84,9 +94,7 @@
         "name": "Rachida El Hady",
         "jobTitle": "React Native Developer",
         "url": "https://kawaiire.github.io/RachidaElHady/",
-        "sameAs": [
-          "https://github.com/RachidaElHady"
-        ]
+        "sameAs": ["https://github.com/RachidaElHady"]
       }
     </script>
   </head>
