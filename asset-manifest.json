@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/RachidaElHady/static/css/main.b2a39785.css",
-    "main.js": "/RachidaElHady/static/js/main.38f43921.js",
+    "main.js": "/RachidaElHady/static/js/main.c248b1c7.js",
     "static/media/DivisionBg.png": "/RachidaElHady/static/media/DivisionBg.3c098c0072c9d47a0d22.png",
     "static/media/GTBg.png": "/RachidaElHady/static/media/GTBg.d603ffb1bd3de69b54ed.png",
     "static/media/CirclesBg.png": "/RachidaElHady/static/media/CirclesBg.f8e3fbd0847efa9ad8bb.png",
@@ -26,10 +26,10 @@
     "static/media/montserrat-vietnamese-400-normal.woff2": "/RachidaElHady/static/media/montserrat-vietnamese-400-normal.176348415471f3e062e6.woff2",
     "index.html": "/RachidaElHady/index.html",
     "main.b2a39785.css.map": "/RachidaElHady/static/css/main.b2a39785.css.map",
-    "main.38f43921.js.map": "/RachidaElHady/static/js/main.38f43921.js.map"
+    "main.c248b1c7.js.map": "/RachidaElHady/static/js/main.c248b1c7.js.map"
   },
   "entrypoints": [
     "static/css/main.b2a39785.css",
-    "static/js/main.38f43921.js"
+    "static/js/main.c248b1c7.js"
   ]
 }
