@@ -8,7 +8,7 @@ import {
   Textarea,
   HStack,
   IconButton,
-  Icon
+  Icon,
 } from '@chakra-ui/react'
 import emailjs from '@emailjs/browser'
 import { useColorMode } from '../../components/ui/color-mode'
@@ -17,7 +17,7 @@ import { FaWhatsapp, FaPhoneAlt } from 'react-icons/fa'
 import {
   EmailButton,
   LinkedinButton,
-  GithubButton
+  GithubButton,
 } from '../../components/common/icons/Buttons'
 import { numbers } from '../../components/common/predefined'
 import { AnimatedButton } from '../../components/common/AnimatedButton'
@@ -28,7 +28,7 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   })
   const [scrollProgress, setScrollProgress] = useState(0)
   useEffect(() => {
@@ -52,7 +52,7 @@ const ContactSection = () => {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }
@@ -72,7 +72,7 @@ const ContactSection = () => {
     return true
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (!validateForm()) return
 
@@ -87,7 +87,7 @@ const ContactSection = () => {
           email: formData.email,
           from_email: formData.email,
           to_email: 'elhadyrachida711@gmail.com',
-          message: formData.message
+          message: formData.message,
         },
         '1I4Snu4edJuW6V6eu' // Replace with your EmailJS Public Key
       )
@@ -107,34 +107,35 @@ const ContactSection = () => {
       icon: <FaWhatsapp />,
       color: '#25D366',
       label: 'Message on WhatsApp',
-      action: phone => window.open(`https://wa.me/${phone}`, '_blank'),
-      size: 'md'
+      action: (phone) => window.open(`https://wa.me/${phone}`, '_blank'),
+      size: 'md',
     },
     {
       icon: <FaPhoneAlt />,
       label: 'Call on Dial',
       color: colors.textInverted,
       onHover: { color: colors.primary },
-      action: phone => (window.location.href = `tel:${phone}`)
-    }
+      action: (phone) => (window.location.href = `tel:${phone}`),
+    },
   ]
 
-  const renderActions = phone => (
+  const renderActions = (phone) => (
     <HStack spacing={2}>
       {actions.map(({ icon, label, action, color, size, onHover }, index) => (
         <IconButton
           key={index}
           aria-label={label}
           onClick={() => action(phone)}
-          colorScheme='gray'
+          colorScheme="gray"
           size={size ?? 'sm'}
-          variant='ghost'
+          variant="ghost"
           _hover={{
             ...onHover,
             transform: 'scale(1.1)',
-            bg: colors.background // Optional hover background color
+            bg: colors.background, // Optional hover background color
           }}
           color={color}
+          bg={colors.backgroundTransparentTBehindText}
         >
           {icon}
         </IconButton>
@@ -144,67 +145,74 @@ const ContactSection = () => {
 
   return (
     <Box
-      id='contactSection'
+      id="contactSection"
       py={16}
       px={8}
       bg={colors.backgroundInverted}
-      position='relative'
-      borderRadius='lg'
-      w='90%'
-      justifySelf='center'
-      overflow='hidden'
+      position="relative"
+      borderRadius="lg"
+      w="90%"
+      justifySelf="center"
+      overflow="hidden"
     >
       {/* Background Dashes */}
       <Box
-        position='absolute'
-        bottom='0'
-        right='0'
-        width='130%'
-        height='130%'
+        position="absolute"
+        bottom="0"
+        right="0"
+        width="130%"
+        height="130%"
         zIndex={0}
-        opacity='0.3'
-        bg='transparent'
+        opacity="0.3"
+        bg="transparent"
         backgroundImage={`radial-gradient(${colors.gradientColor} 2px, transparent 0)`}
-        backgroundSize='15px 13px'
+        backgroundSize="15px 13px"
         // transform={`translateX(${scrollProgress * 400}px)
         //      translateY(${scrollProgress * 500}px)
         //  rotate(45deg)`}
-        transition='transform 0.2s ease'
+        transition="transform 0.2s ease"
         clipPath={`ellipse(${100 - scrollProgress * 100 + 10}% ${
           100 - scrollProgress * 100 + 5
         }% at 100% 100%)`}
       />
 
       <Flex
-        direction='column'
-        alignItems='center'
-        justifyContent='center'
-        maxW='800px'
-        mx='auto'
-        textAlign='center'
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        maxW="800px"
+        mx="auto"
+        textAlign="center"
         zIndex={1}
       >
-        <Text
-          fontSize={fonts.sizes.titleSec}
-          color={colors.textInverted}
-          mb={6}
-        >
-          Contact Me
-        </Text>
-        <Text
-          fontSize={fonts.sizes.toolsText}
-          color={colors.textInverted}
-          mb={8}
-        >
-          Got a question or want to collaborate on a project? I’d love to hear
-          from you! Fill out the form below to get in touch.
-        </Text>
+        <Box zIndex={1} m={'auto'}>
+          <Text
+            fontSize={fonts.sizes.titleSec}
+            color={colors.textInverted}
+            bg={colors.backgroundTransparentTBehindText}
+            m={'auto'}
+            mb={6}
+            width={'max-content'}
+          >
+            Contact Me
+          </Text>
+          <Text
+            fontSize={fonts.sizes.toolsText}
+            color={colors.textInverted}
+            mb={8}
+            bg={colors.backgroundTransparentTBehindText}
+          >
+            Got a question or want to collaborate on a project? I’d love to hear
+            from you! Fill out the form below to get in touch.
+          </Text>
+        </Box>
 
         {/* Contact Methods */}
-        <Box textAlign='center' mb={6} zIndex={1}>
+        <Box textAlign="center" mb={6} zIndex={1}>
           <Text
             fontSize={fonts.sizes.text}
             color={colors.textInverted}
+            bg={colors.backgroundTransparentTBehindText}
           >
             You can reach me via:
           </Text>
@@ -229,21 +237,22 @@ const ContactSection = () => {
             <Flex
               key={index}
               mt={4}
-              alignItems='center'
-              justifyContent='space-between'
+              alignItems="center"
+              justifyContent="space-between"
               gap={4}
             >
               <Text
                 fontSize={fonts.sizes.toolsText}
                 color={colors.textInverted}
                 mt={2}
+                bg={colors.backgroundTransparentTBehindText}
                 // textShadow={`0 0 2px ${colors.background}`}
               >
                 Phone:{' '}
                 <Box
-                  as='span'
-                  letterSpacing='wider'
-                  fontWeight='bold'
+                  as="span"
+                  letterSpacing="wider"
+                  fontWeight="bold"
                   fontFamily={fonts.main}
                 >
                   {phone.text}
@@ -254,21 +263,18 @@ const ContactSection = () => {
           ))}
           <Flex
             mt={4}
-            alignItems='center'
-            justifyContent='space-between'
+            alignItems="center"
+            justifyContent="space-between"
             gap={4}
           >
             <Text
               fontSize={fonts.sizes.toolsText}
               color={colors.textInverted}
               mt={2}
+              bg={colors.backgroundTransparentTBehindText}
             >
               Email:{' '}
-              <Box
-                as='span'
-                letterSpacing='wider'
-                fontWeight='bold'
-              >
+              <Box as="span" letterSpacing="wider" fontWeight="bold">
                 elhadyrachida71@gmail.com
               </Box>
             </Text>
@@ -297,8 +303,8 @@ const ContactSection = () => {
           </Flex>
           <Flex
             mt={4}
-            alignItems='center'
-            justifyContent='space-evenly'
+            alignItems="center"
+            justifyContent="space-evenly"
             gap={4}
           >
             <LinkedinButton />
@@ -308,6 +314,7 @@ const ContactSection = () => {
             fontSize={fonts.sizes.toolsText}
             color={colors.textInverted}
             mt={2}
+            bg={colors.backgroundTransparentTBehindText}
           >
             ----------- or -----------
           </Text>
@@ -315,60 +322,52 @@ const ContactSection = () => {
 
         {/* Email Form */}
         <Flex
-          as='form'
-          direction='column'
-          w='100%'
-          maxW='500px'
+          as="form"
+          direction="column"
+          w="100%"
+          maxW="500px"
           bg={colors.background}
           p={8}
-          borderRadius='lg'
-          shadow='lg'
+          borderRadius="lg"
+          shadow="lg"
           gap={4}
           onSubmit={handleSubmit}
           zIndex={1}
         >
           <Input
-            name='name'
-            placeholder='Your Name'
-            size='lg'
+            name="name"
+            placeholder="Your Name"
+            size="lg"
             value={formData.name}
             onChange={handleChange}
-            focusBorderColor='teal.400'
+            focusBorderColor="teal.400"
           />
           <Input
-            name='email'
-            placeholder='Your Email'
-            size='lg'
-            type='email'
+            name="email"
+            placeholder="Your Email"
+            size="lg"
+            type="email"
             value={formData.email}
             onChange={handleChange}
-            focusBorderColor='teal.400'
+            focusBorderColor="teal.400"
           />
           <Textarea
-            name='message'
-            placeholder='Your Message'
-            size='lg'
+            name="message"
+            placeholder="Your Message"
+            size="lg"
             rows={5}
             value={formData.message}
             onChange={handleChange}
-            focusBorderColor='teal.400'
+            focusBorderColor="teal.400"
           />
-          {error && (
-            <Text color='red.500'>
-              {error}
-            </Text>
-          )}
-          {success && (
-            <Text color='green.500'>
-              {success}
-            </Text>
-          )}
+          {error && <Text color="red.500">{error}</Text>}
+          {success && <Text color="green.500">{success}</Text>}
           <AnimatedButton
             // fontSize={fonts.sizes.toolsText}
             // colorScheme='teal'
-            type='submit'
+            type="submit"
             // _hover={{ bg: colors.primary }}
-            w='100%'
+            w="100%"
           >
             Send Message
           </AnimatedButton>

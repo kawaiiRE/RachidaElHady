@@ -18,24 +18,32 @@ import { isMobile, numbers } from '../common/predefined'
 import {
   EmailButton,
   GithubButton,
-  LinkedinButton
+  LinkedinButton,
 } from '../common/icons/Buttons'
 import { IoIosClose } from 'react-icons/io'
 import { Text } from '../common/TextComponent'
 
 const projects = [
-  { name: 'Crazy Sudoku', path: '/projects/crazySudoku' }
+  { name: 'Crazy Sudoku', path: '/projects/crazySudoku' },
   // { name: 'Local Business Website', path: '/projects/local-business' }
   // Add more projects as needed
 ]
 
-function Sidebar ({
+const nav = [
+  { name: 'Intro', path: 'introSection' },
+  { name: 'Expertise', path: 'expertiseSection' },
+  { name: 'Tools', path: 'toolsSection' },
+  { name: 'Projects', path: 'projectsSection' },
+  { name: 'Contact', scrollTo: 'contactSection' },
+]
+
+function Sidebar({
   isOpen = false,
   onClose,
   colors,
   fonts,
   navBarHeight,
-  sideBarWidth
+  sideBarWidth,
 }) {
   const navigate = useNavigate()
   const location = useLocation()
@@ -46,7 +54,7 @@ function Sidebar ({
     setIsDialogOpen(!isDialogOpen)
   }
 
-  const handleScrollToSection = sectionId => {
+  const handleScrollToSection = (sectionId) => {
     if (isMobile) {
       onClose()
     }
@@ -62,13 +70,13 @@ function Sidebar ({
 
         window.scrollTo({
           top: yPosition,
-          behavior: 'smooth'
+          behavior: 'smooth',
         })
       }
     }
   }
 
-  const handleViewProject = project => {
+  const handleViewProject = (project) => {
     if (isMobile) {
       onClose()
     }
@@ -90,14 +98,15 @@ function Sidebar ({
     color: colors.textInverted,
     p: 2, // Add padding for spacing
     borderRadius: 'md',
+    bg: colors.backgroundTransparentTBehindText,
     _hover: {
       bg: colors.background, // Change background color on hover
       color: colors.text, // Optional: change text color on hover
-      textDecoration: 'none' // Remove underline on hover
+      textDecoration: 'none', // Remove underline on hover
     },
     zIndex: 10,
     width: '100%',
-    fontFamily: fonts.main
+    fontFamily: fonts.main,
   }
 
   return (
@@ -106,8 +115,8 @@ function Sidebar ({
       p={4}
       // display={isOpen ? 'block' : 'none'}
       width={{ base: '70%', md: sideBarWidth }}
-      height='100vh'
-      position='fixed'
+      height="100vh"
+      position="fixed"
       top={0}
       left={0}
       // {...(isMobile
@@ -118,41 +127,41 @@ function Sidebar ({
       //       left: 0
       //     })}
       zIndex={1001}
-      transition='all 0.3s ease-in-out'
+      transition="all 0.3s ease-in-out"
       transform={isOpen ? 'translateX(0)' : 'translateX(-100%)'}
       // paddingTop='70px'
-      paddingTop='0px'
-      borderRight='1px solid'
+      paddingTop="0px"
+      borderRight="1px solid"
       // borderColor={colors.border}
     >
       <Box
-        position='absolute'
-        bottom='0'
-        right='0'
-        width='100%'
-        height='100%'
+        position="absolute"
+        bottom="0"
+        right="0"
+        width="100%"
+        height="100%"
         zIndex={0}
-        opacity='0.3'
-        bg='transparent'
+        opacity="0.3"
+        bg="transparent"
         backgroundImage={`radial-gradient(${colors.gradientColor} 2px, transparent 0)`}
-        backgroundSize='15px 13px'
+        backgroundSize="15px 13px"
         // transform={`translateX(${scrollProgress * 400}px)
         //      translateY(${scrollProgress * 500}px)
         //  rotate(45deg)`}
-        transition='transform 0.2s ease'
-        clipPath=' polygon(0 0, 100% 50%, 0 100%, 0 50%)'
+        transition="transform 0.2s ease"
+        clipPath=" polygon(0 0, 100% 50%, 0 100%, 0 50%)"
       />
 
       <Flex
         height={navBarHeight} // Full height of the Box
-        justify='center' // Horizontally center the content
-        align='center' // Vertically center the content
+        justify="center" // Horizontally center the content
+        align="center" // Vertically center the content
       >
         {isMobile ? (
-          <HStack spacing={10} justifyContent='space-evenly' w='100%'>
+          <HStack spacing={10} justifyContent="space-evenly" w="100%">
             <Text
-              fontSize='lg'
-              fontWeight='bold'
+              fontSize="lg"
+              fontWeight="bold"
               // textShadow={`0 0 10px ${colors.background}`}
               color={colors.textInverted}
               isTitle={true}
@@ -161,14 +170,14 @@ function Sidebar ({
             </Text>
             <ColorModeButton />
             <IconButton
-              aria-label='Menu'
+              aria-label="Menu"
               // icon={<HiMenuAlt3 />}
-              variant='ghost'
+              variant="ghost"
               onClick={onClose}
               // display={{ base: 'block', md: 'block' }}
               size={'lg'}
-              rounded='full'
-              colorPalette='gray'
+              rounded="full"
+              colorPalette="gray"
               color={colors.textInverted}
               // filter={`drop-shadow(0 0 4px ${colors.background})`}
             >
@@ -181,79 +190,63 @@ function Sidebar ({
           </>
         )}
       </Flex>
-      <VStack align='start' spacing={0} mt={8} zIndex={10} gap={0}>
-        <Link
-          onClick={() => handleScrollToSection('introSection')}
-          {...linkStyles}
-        >
-          Intro
-        </Link>
-        <Link
-          onClick={() => handleScrollToSection('expertiseSection')}
-          {...linkStyles}
-        >
-          Expertise
-        </Link>
-        <Link
-          onClick={() => handleScrollToSection('toolsSection')}
-          {...linkStyles}
-        >
-          Tools
-        </Link>
-        <Link
-          onClick={() => handleScrollToSection('projectsSection')}
-          {...linkStyles}
-        >
-          Projects
-        </Link>
-        <Box>
-          <VStack align='start' pl={4} spacing={2}>
-            {projects.map(project => (
-              <Link
-                key={project.name}
-                // onClick={() => handleScrollToSection('projectsSection')}
-                onClick={() => handleViewProject(project)}
-                {...linkStyles}
-                fontSize='md' // Slightly smaller for sub-links
-                fontWeight='normal'
-                fontFamily={fonts.main}
-              >
-                {project.name}
-              </Link>
-            ))}
-          </VStack>
-        </Box>
-        <Link
-          onClick={() => handleScrollToSection('contactSection')}
-          {...linkStyles}
-        >
-          Contact
-        </Link>
+      <VStack align="start" spacing={0} mt={8} zIndex={10} gap={0}>
+        {nav.map((item, index) => (
+          <>
+            <Link
+              key={index}
+              onClick={() => handleScrollToSection(item.scrollTo || item.path)}
+              {...linkStyles}
+            >
+              {item.name}
+            </Link>
+
+            {item.name === 'Projects' && (
+              <Box>
+                <VStack align="start" pl={4} spacing={2}>
+                  {projects.map((project) => (
+                    <Link
+                      key={project.name}
+                      // onClick={() => handleScrollToSection('projectsSection')}
+                      onClick={() => handleViewProject(project)}
+                      {...linkStyles}
+                      fontSize="md"
+                      fontWeight="normal"
+                      fontFamily={fonts.main}
+                    >
+                      {project.name}
+                    </Link>
+                  ))}
+                </VStack>
+              </Box>
+            )}
+          </>
+        ))}
       </VStack>
       {/* Social Media Links */}
       <Flex
-        position='absolute'
-        bottom='16px'
-        left='0'
-        right='0'
-        justifyContent='center'
-        alignItems='center'
+        position="absolute"
+        bottom="16px"
+        left="0"
+        right="0"
+        justifyContent="center"
+        alignItems="center"
         zIndex={10}
       >
-        <HStack spacing={8} justifyContent='space-evenly' w='90%'>
+        <HStack spacing={8} justifyContent="space-evenly" w="90%">
           <LinkedinButton />
           <GithubButton />
           <Box
             as={FaWhatsapp}
-            size='24px'
-            color='#25D366' // WhatsApp green
+            size="24px"
+            color="#25D366" // WhatsApp green
             _hover={{ transform: 'scale(1.2)' }} // Slightly enlarge on hover
-            transition='transform 0.2s ease'
+            transition="transform 0.2s ease"
             // onClick={() => handleOpenNewTab('https://wa.me/your-number')}
             onClick={() =>
               handleOpenNewTab(`https://wa.me/${numbers.lebanese.number}`)
             }
-            cursor='pointer'
+            cursor="pointer"
           />
           <EmailButton withBg={false} />
         </HStack>
