@@ -39,7 +39,12 @@ function ToolsSection() {
         </Box>
         <Flex gap={8} wrap="wrap" justify="center">
           {technologies.frontendTechnologies.map((tech, index) => (
-            <Technology key={index} imgSrc={tech.imgSrc} label={tech.label} />
+            <Technology
+              key={index}
+              imgSrc={tech.imgSrc}
+              localSrc={tech.localSrc}
+              label={tech.label}
+            />
           ))}
         </Flex>
 
@@ -51,7 +56,12 @@ function ToolsSection() {
         </Box>
         <Flex gap={4} wrap="wrap" justify="center" p={4}>
           {technologies.otherTechnologies.map((tech, index) => (
-            <Technology key={index} imgSrc={tech.imgSrc} label={tech.label} />
+            <Technology
+              key={index}
+              imgSrc={tech.imgSrc}
+              localSrc={tech.localSrc}
+              label={tech.label}
+            />
           ))}
         </Flex>
       </Flex>
@@ -59,7 +69,7 @@ function ToolsSection() {
   )
 }
 
-function Technology({ imgSrc, label }) {
+function Technology({ imgSrc, label, localSrc }) {
   const { colors, fonts } = useColorMode()
   return (
     <Flex
@@ -79,7 +89,7 @@ function Technology({ imgSrc, label }) {
       }}
     >
       <Image
-        src={imgSrc}
+        src={localSrc || imgSrc}
         alt={label}
         width={fonts.sizes.toolsImg}
         height={fonts.sizes.toolsImg}

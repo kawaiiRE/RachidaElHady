@@ -1,6 +1,9 @@
+import nuxtSvg from 'assets/images/NuxtIcon.svg'
+import scssISvg from 'assets/images/ScssIcon.svg'
+
 export const numbers = {
   lebanese: { number: '+96181977603', text: '+961 81977603' },
-  saudi: { number: '+966546905184', text: '+966 546905184' },
+  // saudi: { number: '+966546905184', text: '+966 546905184' },
 }
 
 export const isMobile =
@@ -17,6 +20,7 @@ export const technologies = {
     {
       imgSrc:
         'https://nuxt.com/cdn-cgi/image/w=40,h=40/https://raw.githubusercontent.com/nuxt/modules/main/icons/nuxt.svg',
+      localSrc: nuxtSvg,
       label: 'Nuxt',
     },
     {
@@ -43,6 +47,7 @@ export const technologies = {
     },
     {
       imgSrc: 'https://www.svgrepo.com/show/374068/scss.svg',
+      localSrc: scssISvg,
       label: 'Scss',
     },
     // {
