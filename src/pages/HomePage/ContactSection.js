@@ -79,8 +79,8 @@ const ContactSection = () => {
     // Use EmailJS to send the email
     emailjs
       .send(
-        'service_tc52rx7', // Replace with your EmailJS Service ID
-        'template_axk1mdb', // Replace with your EmailJS Template ID
+        process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_tc52rx7',
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_axk1mdb',
         {
           from_name: formData.name,
           to_name: 'Rachida',
@@ -89,14 +89,15 @@ const ContactSection = () => {
           to_email: 'elhadyrachida711@gmail.com',
           message: formData.message,
         },
-        '1I4Snu4edJuW6V6eu' // Replace with your EmailJS Public Key
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '1I4Snu4edJuW6V6eu'
       )
       .then(
         () => {
           setSuccess('Message sent successfully!')
           setFormData({ name: '', email: '', message: '' }) // Clear form
         },
-        () => {
+        (error) => {
+          console.error('EmailJS error:', error)
           setError('Failed to send the message. Please try again.')
         }
       )
