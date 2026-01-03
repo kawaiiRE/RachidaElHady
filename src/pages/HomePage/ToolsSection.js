@@ -95,6 +95,7 @@ function Technology({ imgSrc, label, localSrc }) {
         height={fonts.sizes.toolsImg}
         style={{
           marginBottom: '12px',
+          objectFit: 'contain',
         }}
       />
       <Text

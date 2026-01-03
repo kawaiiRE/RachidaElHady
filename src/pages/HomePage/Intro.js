@@ -182,7 +182,7 @@ function Intro () {
           h='450px'
           left='0px'
           top='0px'
-          bg='blue'
+          bg={colors.introBoxBg}
           position='absolute'
           borderRadius='lg'
         ></Box>

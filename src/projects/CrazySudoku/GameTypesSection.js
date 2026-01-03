@@ -116,9 +116,10 @@ export default function GameTypesSection() {
   return (
     <Box
       textAlign="center"
-      my={10}
+      py={100}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      height={'80dvh'}
     >
       {/* Game Selector */}
       <Flex
@@ -179,7 +180,7 @@ export default function GameTypesSection() {
       <MotionBox
         justify="center"
         key={gameTypes[currentGame].name}
-        height="450px"
+        height="max(450px, 80%)"
         width={isMobile ? '90%' : '80%'}
         // bg={gameTypes[currentGame].bg}
         borderRadius="md"

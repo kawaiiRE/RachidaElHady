@@ -25,6 +25,7 @@ const theme = {
     background: '#ffffff',
     backgroundSecondary: 'bg.muted',
     backgroundTransparentTBehindText: '#1a202ca8',
+    introBoxBg: 'lightblue',
   },
   dark: {
     ...commonTheme,
@@ -34,6 +35,7 @@ const theme = {
     background: '#1a202c',
     backgroundSecondary: '#011627',
     backgroundTransparentTBehindText: '#ffffff87',
+    introBoxBg: 'blue',
   },
   fonts: {
     main: "'Montserrat', Italic",

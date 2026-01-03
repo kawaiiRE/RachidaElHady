@@ -207,12 +207,12 @@ function Sidebar({
                   {projects.map((project) => (
                     <Link
                       key={project.name}
-                      // onClick={() => handleScrollToSection('projectsSection')}
                       onClick={() => handleViewProject(project)}
                       {...linkStyles}
                       fontSize="md"
-                      fontWeight="normal"
+                      fontWeight="bold"
                       fontFamily={fonts.main}
+                      _before={{ content: '"● "', fontSize: 'sm' }}
                     >
                       {project.name}
                     </Link>
