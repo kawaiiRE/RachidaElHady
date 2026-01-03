@@ -1,5 +1,5 @@
-import nuxtSvg from 'assets/images/NuxtIcon.svg'
-import scssISvg from 'assets/images/ScssIcon.svg'
+import nuxtSvg from '../../assets/images/NuxtIcon.svg'
+import scssISvg from '../../assets/images/ScssIcon.svg'
 
 export const numbers = {
   lebanese: { number: '+96181977603', text: '+961 81977603' },
